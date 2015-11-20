@@ -1,0 +1,15 @@
+defmodule Blog.Repo.Migrations.CreatePost do
+  use Ecto.Migration
+
+  def change do
+    create table(:posts) do
+      add :title, :string
+      add :body, :string
+      add :url_slug, :string
+
+      timestamps
+    end
+
+    create unique_index(:posts, [:url_slug])
+  end
+end

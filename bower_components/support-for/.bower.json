@@ -1,0 +1,34 @@
+{
+  "name": "support-for",
+  "description": "Allows Sass authors to conditionally add support for specific browser versions.",
+  "main": "sass/_support-for.scss",
+  "authors": [
+    "John Albin Wilkins <virtually.johnalbin@gmail.com> (http://john.albin.net/)"
+  ],
+  "license": "GPL-2.0",
+  "keywords": [
+    "sass",
+    "browser",
+    "support"
+  ],
+  "homepage": "https://github.com/JohnAlbin/support-for",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "lib",
+    "node_modules",
+    "sache.json",
+    "support-for.gemspec",
+    "test"
+  ],
+  "version": "1.0.2",
+  "_release": "1.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.2",
+    "commit": "e105139e6805e014c75e2e01faf7d54c5a13ed08"
+  },
+  "_source": "git://github.com/JohnAlbin/support-for.git",
+  "_target": "~1.0.2",
+  "_originalSource": "support-for"
+}

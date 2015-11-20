@@ -1,4 +1,4 @@
-# Website
+# Blog
 
 To start your Phoenix app:
 

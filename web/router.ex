@@ -1,5 +1,5 @@
-defmodule Website.Router do
-  use Website.Web, :router
+defmodule Blog.Router do
+  use Blog.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,14 +13,20 @@ defmodule Website.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Website do
+  scope "/admin", Blog do
+    pipe_through :browser
+
+    # get "/", AdminController, :index
+  end
+
+  scope "/", Blog do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Website do
+  # scope "/api", Blog do
   #   pipe_through :api
   # end
 end

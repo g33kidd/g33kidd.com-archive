@@ -1,0 +1,6 @@
+@import "settings";
+@import "normalize";
+
+@include normalize();
+
+@import "components/post";

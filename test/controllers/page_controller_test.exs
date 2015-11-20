@@ -1,5 +1,5 @@
-defmodule Website.PageControllerTest do
-  use Website.ConnCase
+defmodule Blog.PageControllerTest do
+  use Blog.ConnCase
 
   test "GET /" do
     conn = get conn(), "/"

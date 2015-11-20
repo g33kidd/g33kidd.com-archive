@@ -1,12 +1,12 @@
-defmodule Website.Web do
+defmodule Blog.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Website.Web, :controller
-      use Website.Web, :view
+      use Blog.Web, :controller
+      use Blog.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -29,11 +29,11 @@ defmodule Website.Web do
     quote do
       use Phoenix.Controller
 
-      alias Website.Repo
+      alias Blog.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import Website.Router.Helpers
+      import Blog.Router.Helpers
     end
   end
 
@@ -47,7 +47,7 @@ defmodule Website.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Website.Router.Helpers
+      import Blog.Router.Helpers
     end
   end
 
@@ -61,7 +61,7 @@ defmodule Website.Web do
     quote do
       use Phoenix.Channel
 
-      alias Website.Repo
+      alias Blog.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 1, from: 2]
     end

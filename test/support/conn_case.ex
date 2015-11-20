@@ -1,4 +1,4 @@
-defmodule Website.ConnCase do
+defmodule Blog.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -20,20 +20,20 @@ defmodule Website.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      alias Website.Repo
+      alias Blog.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 2]
 
-      import Website.Router.Helpers
+      import Blog.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint Website.Endpoint
+      @endpoint Blog.Endpoint
     end
   end
 
   setup tags do
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Website.Repo, [])
+      Ecto.Adapters.SQL.restart_test_transaction(Blog.Repo, [])
     end
 
     :ok

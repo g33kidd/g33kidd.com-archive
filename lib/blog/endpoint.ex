@@ -1,18 +1,15 @@
-defmodule Website.Endpoint do
-  use Phoenix.Endpoint, otp_app: :website
+defmodule Blog.Endpoint do
+  use Phoenix.Endpoint, otp_app: :blog
 
-  socket "/socket", Website.UserSocket
+  socket "/socket", Blog.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
-  #
-  # You should set gzip to true if you are running phoenix.digest
-  # when deploying your static files in production.
+  # Set gzip to true when deploying with phoenix.digest
   plug Plug.Static,
-    at: "/", from: :website, gzip: false,
+    at: "/", from: :blog, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
-  # Code reloading can be explicitly enabled under the
-  # :code_reloader configuration of your endpoint.
+  # see :code_reloader configuration of your endpoint.
   if code_reloading? do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
@@ -32,8 +29,8 @@ defmodule Website.Endpoint do
 
   plug Plug.Session,
     store: :cookie,
-    key: "_website_key",
+    key: "_blog_key",
     signing_salt: "K5yEdur7"
 
-  plug Website.Router
+  plug Blog.Router
 end

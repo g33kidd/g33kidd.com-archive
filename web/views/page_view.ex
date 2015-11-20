@@ -1,3 +1,3 @@
-defmodule Website.PageView do
-  use Website.Web, :view
+defmodule Blog.PageView do
+  use Blog.Web, :view
 end

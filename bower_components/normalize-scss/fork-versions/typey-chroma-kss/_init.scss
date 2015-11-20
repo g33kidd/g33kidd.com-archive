@@ -1,0 +1,35 @@
+// Initialization partial
+//
+// To make it easier to use all variables and mixins in any Sass file in this
+// project, each .scss file has a `@import 'init';` declaration. The _init.scss
+// file is in charge of importing all the other partials needed for the
+// project.
+//
+// The initialization partial is organized in this way:
+// - First we set any shared Sass variables.
+// - Next we import Sass modules.
+// - Last we define our custom mixins for this project.
+
+
+// The following Sass functions are required to generate some variables' values,
+// so we load them first.
+@import 'chroma/functions';
+
+@import 'init/colors';
+@import 'init/variables';
+
+//
+// 3rd party libraries
+//
+
+// Add Chroma to manage colors.
+@import 'chroma';
+// Add typey to manage font sizes and margins.
+@import 'typey';
+// Used by normalize-scss to conditionally add browser support.
+@import 'support-for';
+
+//
+// Custom Sass functions.
+//
+@import 'init/rtl/rtl';

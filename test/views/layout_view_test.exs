@@ -1,3 +1,3 @@
-defmodule Website.LayoutViewTest do
-  use Website.ConnCase, async: true
+defmodule Blog.LayoutViewTest do
+  use Blog.ConnCase, async: true
 end
