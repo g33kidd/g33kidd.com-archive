@@ -1,15 +1,17 @@
-defmodule Blog.Post do
+defmodule Blog.Page do
   use Blog.Web, :model
 
-  schema "posts" do
+  schema "pages" do
     field :title, :string
-    field :body, :string
+    field :content, :string
+    field :styles, :map
+    field :html, :string
     field :slug, :string
 
     timestamps
   end
 
-  @required_fields ~w(title body slug)
+  @required_fields ~w(title content styles html slug)
   @optional_fields ~w()
 
   @doc """

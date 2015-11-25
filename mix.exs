@@ -37,7 +37,8 @@ defmodule Blog.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
      {:ueberauth, "~> 0.1"},
-     {:html_sanitize_ex, "~> 0.1.0"}]
+     {:html_sanitize_ex, "~> 0.1.0"},
+     {:exgravatar, "~> 2.0.0"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

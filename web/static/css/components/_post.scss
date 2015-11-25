@@ -5,17 +5,24 @@
   .post {
     padding: 50px;
 
-    background-color: $s2-bg;
-    color: $s2-color;
+    background-color: $light-bg;
+    color: $light-color;
+
     a {
-      color: $s2-link-color;
+      color: $light-link-color;
     }
 
     &:nth-child(2n+2) {
-      background-color: $s1-bg;
-      color: $s1-color;
+      background-color: $dark-bg;
+      color: $dark-color;
       a {
-        color: $s1-link-color;
+        color: $dark-link-color;
+      }
+      &.active {
+        .title {
+          background-color: $light-bg;
+          color: $light-color;
+        }
       }
     }
 
@@ -31,8 +38,14 @@
 
     // meaning, when the user scrolls down and the title gets cut off.
     // should alternate based on sections.
-    &.is-active-post {
-
+    &.active {
+      .title {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        padding: 10px;
+      }
     }
   }
 }

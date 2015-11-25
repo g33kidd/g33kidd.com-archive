@@ -4,12 +4,13 @@ defmodule Blog.Repo.Migrations.CreatePost do
   def change do
     create table(:posts) do
       add :title, :string
-      add :body, :string
-      add :url_slug, :string
+      add :body, :text
+      add :styles, :map
+      add :slug, :string
 
       timestamps
     end
 
-    create unique_index(:posts, [:url_slug])
+    create unique_index(:posts, [:slug])
   end
 end

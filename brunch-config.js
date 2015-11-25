@@ -11,7 +11,10 @@ exports.config = {
       // https://github.com/brunch/brunch/tree/master/docs#concatenation
     },
     stylesheets: {
-      joinTo: "css/app.css"
+      joinTo: {
+        "css/app.css": "web/static/css/app.scss",
+        "css/admin.css": "web/static/css/admin.scss"
+      }
     },
     templates: {
       joinTo: "js/app.js"
@@ -52,7 +55,8 @@ exports.config = {
         includePaths: [
           'bower_components/support-for/sass',
           'bower_components/normalize-scss/sass',
-          'bower_components/normalize-scss/sass/normalize'
+          'bower_components/normalize-scss/sass/normalize',
+          'bower_components/susy/sass'
         ]
       }
     }

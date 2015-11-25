@@ -1,16 +1,16 @@
-defmodule Blog.Post do
+defmodule Blog.Setting do
   use Blog.Web, :model
 
-  schema "posts" do
-    field :title, :string
-    field :body, :string
-    field :slug, :string
+  schema "settings" do
+    field :key, :string
+    field :val, :string
+    field :map, :map
 
     timestamps
   end
 
-  @required_fields ~w(title body slug)
-  @optional_fields ~w()
+  @required_fields ~w(key val)
+  @optional_fields ~w(map)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -21,6 +21,5 @@ defmodule Blog.Post do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> unique_constraint(:slug)
   end
 end

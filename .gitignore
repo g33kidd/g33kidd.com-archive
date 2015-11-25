@@ -3,6 +3,7 @@
 /db
 /deps
 /*.ez
+/bower_components
 
 # other
 .DS_Store
