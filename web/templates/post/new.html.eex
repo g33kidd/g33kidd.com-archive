@@ -1,0 +1,13 @@
+<div class="post-box">
+  <h1>New Post</h1>
+
+  <%= form_for @changeset, @action, fn f -> %>
+    <%= text_input f, :title, class: "post-input", id: "post-title" %>
+
+    <div id="content-editor" class="editor" contenteditable></div>
+
+    <%= text_input f, :body, class: "post-input hidden", id: "post-body" %>
+    <%= text_input f, :slug, class: "post-input", id: "post-slug" %>
+    <%= submit "Create", class: "create-post" %>
+  <% end %>
+</div>

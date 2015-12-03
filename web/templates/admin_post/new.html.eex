@@ -1,4 +1,0 @@
-<%= form_for @changeset, @action, [method: "post"], fn f -> %>
-  <%= text_input f, :title, class: "form-input" %>
-  <%= text_input f, :body, class: "form-input" %>
-<% end %>

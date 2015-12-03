@@ -12,13 +12,49 @@
   </head>
 
   <body>
-    <%= render "admin-header.html", conn: @conn %>
+
+    <header class="admin-header">
+      <div class="logo">
+        <a href="/" class="text">Blog</a>
+      </div>
+
+      <div class="nav">
+        <div class="items">
+          <span class="item"><a href="<%= admin_path(@conn, :index) %>">Dashboard</a></span>
+          <span class="item">
+            <a href="<%= admin_path(@conn, :index) %>">Posts</a>
+            <div class="slider">
+              <span class="item"><a href="<%= admin_path(@conn, :index) %>">New</a></span>
+              <span class="item"><a href="#">Find</a></span>
+              <!-- make find show search modal to filter posts -->
+              <span class="item"><a href="#">Settings</a></span>
+            </div>
+          </span>
+          <span class="item">
+            <a href="<%= admin_path(@conn, :index) %>">Pages</a>
+            <span class="slider">
+              <span class="item"><a href="<%= admin_path(@conn, :index) %>">New</a></span>
+              <span class="item"><a href="#">Settings</a></span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="user">
+        <div class="avatar">
+          <img src="http://www.fillmurray.com/100/100" alt="">
+        </div>
+      </div>
+    </header>
+
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
     <div class="admin-content">
       <%= @inner %>
     </div>
-    <%= render "admin-footer.html" %>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="<%= static_path(@conn, "/js/admin.js") %>"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

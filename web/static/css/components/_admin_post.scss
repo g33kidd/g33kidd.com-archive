@@ -1,0 +1,22 @@
+.post-list {
+  .post {
+
+  }
+}
+
+.post-box {
+  .post-input {
+    border: 1px solid #eee;
+    display: block;
+    padding: 5px 10px;
+    margin: 15px 0px;
+    width: 100%;
+  }
+
+  #content-editor {
+    outline: none;
+    padding: 10px;
+    border: 1px solid darken(#fff, 5%);
+    font-family: "Crimson Text", serif;
+  }
+}

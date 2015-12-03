@@ -22,4 +22,19 @@ defmodule Blog.Setting do
     model
     |> cast(params, @required_fields, @optional_fields)
   end
+
+  # gets a setting by it's key. Returns a `val` or a `map`.
+  def get(key) do
+  end
+
+  @doc """
+
+    Will return a Map of all the settings:
+    %{key: val}
+
+    If `val` does not exist, we'll add `map` to the final Map.
+
+  """
+  def get_all(except \\ [], only \\ []) do
+  end
 end

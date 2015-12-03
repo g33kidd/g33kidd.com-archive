@@ -1,0 +1,12 @@
+<div class="post">
+  <!-- addons displayed by a priority # -->
+  <!-- example: header, body, footer[comment_display, comment_fields] -->
+  <!-- addons could have nested components -->
+  <!-- these addons would add functionality by using the api and ajax requests, maybe sockets? -->
+  
+
+  <div class="title"><%= @post.title %></div>
+  <div class="content">
+    <%= @post.body %>
+  </div>
+</div>

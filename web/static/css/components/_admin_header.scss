@@ -7,12 +7,27 @@ header.admin-header {
   max-height: 60px;
 
   .logo {
-    font-size: 20px;
     position: relative;
     float: left;
-    font-weight: 600;
-    padding: 12px 10px;
-    color: $admin-logo-color;
+    .text {
+      display: block;
+      font-weight: 600;
+      padding: 12px 10px;
+      color: $admin-logo-color;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    img {
+      max-height: 50px;
+      height: 50px;
+      padding: 0px;
+    }
+
+    &:hover {
+      .text {
+        color: lighten($admin-logo-color, 30%);
+      }
+    }
   }
 
   .nav {

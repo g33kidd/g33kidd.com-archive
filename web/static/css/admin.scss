@@ -5,6 +5,7 @@
 @include normalize();
 
 @import "components/admin_header";
+@import "components/admin_post";
 
 html {
   box-sizing: border-box;
@@ -16,6 +17,9 @@ html {
 
 body {
   font-family: 'Raleway', sans-serif;
+  .hidden {
+    display: none !important;
+  }
   .admin-content {
     padding: 10px 20px;
     @include container(60em);

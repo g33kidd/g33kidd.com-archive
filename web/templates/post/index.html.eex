@@ -1,0 +1,8 @@
+<div class="list-posts">
+  <%= for post <- @posts do %>
+    <div class="post">
+      <div class="title"><%= post.title %></div>
+      <div class="content"><%= post.body %></div>
+    </div>
+  <% end %>
+</div>
