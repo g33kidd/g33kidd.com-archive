@@ -4,8 +4,9 @@ defmodule Blog.BlogController do
   alias Blog.Content
 
   def index(conn, _params) do
+    posts = Content.get_all_clean("post")
     render conn, "index.html",
-      posts: Content.get_all_by("post")
+      posts: posts
   end
 
   @doc """

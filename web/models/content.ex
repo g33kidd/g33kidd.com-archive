@@ -37,6 +37,22 @@ defmodule Blog.Content do
     Repo.all query
   end
 
+  def get_all_clean(type) do
+    all = get_all_by(type)
+    for item <- all, do: do_add_map_vals(item)
+  end
+
+  def do_add_map_vals(content) do
+    IO.inspect content
+    map = Map.from_struct(content)
+
+    Map.new()
+    |> Dict.merge(map.data)
+    |> Dict.put(:slug, map.slug)
+    |> Dict.put(:id, map.id)
+    |> to_atom()
+  end
+
   def get_single(slug) when is_bitstring(slug) do
     Repo.get_by! Blog.Content, slug: slug
   end
@@ -45,8 +61,12 @@ defmodule Blog.Content do
     Repo.get! id
   end
 
+  def to_atom(content) do
+    for {key, val} <- content, into: %{}, do: {:"#{key}", val}
+  end
+
   def get_data_for(content) do
-    for {key, val} <- content.data, into: %{}, do: {String.to_atom(key), val}
+    to_atom(content.data)
   end
 
   # gets the last 'n' posts
