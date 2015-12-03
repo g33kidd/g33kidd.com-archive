@@ -1,0 +1,4 @@
+<div class="title"><%= @post.title %></div>
+<div class="content">
+  <%= raw @post.body %>
+</div>
