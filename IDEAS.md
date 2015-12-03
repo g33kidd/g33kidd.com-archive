@@ -42,6 +42,10 @@ post_extra = ContentExtra.compose([
   {:tags, "just,some,tags,for,a,post"}
 ])
 
+extra_example = %{
+  tags: "just,some,tags,for,a,post"
+}
+
 # add_extra would validate the extra. That's why we only create it here.
 ContentPost.add_extra(post, post_extra)
 ```
@@ -51,9 +55,12 @@ When any page is loaded, extras will be automatically added.
 Content extras are basically just an id, key, and val/map. Normal values are stored as text, such as strings or integers and will be parsed when the are loaded.
 
 ## Templates and Styles
+Custom templates are stored in their own directory, outside of `web/templates`. Templates can have a `ContentType` associated with them, meaning that if content with that type is accessed, that template will be rendered.
 
+The templates directory will be configurable. Preferably the option for third-party providers like AWS S3, Dropbox, or some other platform? If there is a way to render templates from Strings, it would be cool to store templates in the DB as well.
 
-#### Template Modification
-Each content-type would be defined in ContentTypes/types? Somewhere either in the configuration or in the database.
+## Template Revisions
 
-The type's content would be a file stored somewhere with a template. This way a user can modify a templates content on their system or from within the Admin Dashboard.
+Template revisions would just be backups of a template version. Once the user saves a template, it would be added as a revision and a file would be saved somewhere. Under a folder of the version, or... The filename would include the version number:`revisions/<template_name>_v34.html.eex`
+
+See: templates/revisions/ for an example of how this might look.

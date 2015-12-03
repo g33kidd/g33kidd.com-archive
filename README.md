@@ -1,3 +1,6 @@
+# g33kidd.com
+This is very much still in development. If you're interested, checkout some ideas I'll be implementing in https://github.com/g33kidd/g33kidd.com/blob/master/IDEAS.md.
+
 # Blog
 
 To start your Phoenix app:

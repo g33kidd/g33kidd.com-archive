@@ -1,12 +1,11 @@
 defmodule Blog.BlogController do
   use Blog.Web, :controller
 
-  alias Blog.Post
-  alias Blog.Page
+  alias Blog.Content
 
   def index(conn, _params) do
     render conn, "index.html",
-      posts: Repo.all(Post)
+      posts: Content.get_all_by("post")
   end
 
   @doc """
@@ -14,25 +13,22 @@ defmodule Blog.BlogController do
   TODO: display not found page if nothing is found
   """
   def show(conn, %{"slug" => slug}) do
-    if Post.has_slug?(slug) do
-      display_post conn, slug
-    end
-
-    if Page.has_slug?(slug) do
-      display_page conn, slug
+    if Content.has_slug?(slug) do
+      display_content conn, slug
     end
 
     display_none conn
   end
 
-  def display_page(conn, slug) do
-    render conn, "page.html",
-      page: Page.get_by_slug slug
-  end
+  def display_content(conn, slug) do
+    content = Content.get_single slug
+    content_type = :"#{content.type}"
+    content_assigns = []
+    |> Dict.put(content_type, Content.get_data_for(content))
+    |> Dict.put(:slug, content.slug)
 
-  def display_post(conn, slug) do
-    render conn, "post.html",
-      post: Post.get_by_slug slug
+    conn |> put_layout("blank.html")
+    render conn, "#{content.type}.html", content_assigns
   end
 
   def display_none(conn) do
