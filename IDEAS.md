@@ -59,6 +59,8 @@ Custom templates are stored in their own directory, outside of `web/templates`. 
 
 The templates directory will be configurable. Preferably the option for third-party providers like AWS S3, Dropbox, or some other platform? If there is a way to render templates from Strings, it would be cool to store templates in the DB as well.
 
-Template revisions? Yes...
-
 ## Template Revisions
+
+Template revisions would just be backups of a template version. Once the user saves a template, it would be added as a revision and a file would be saved somewhere. Under a folder of the version, or... The filename would include the version number:`revisions/<template_name>_v34.html.eex`
+
+See: templates/revisions/ for an example of how this might look.

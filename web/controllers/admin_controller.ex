@@ -1,7 +1,7 @@
 defmodule Blog.AdminController do
   use Blog.Web, :controller
 
-  plug :admin_assigns
+  plug :assign_admin_assigns
 
   def index(conn, _) do
     put_layout conn, "admin.html"
@@ -31,8 +31,10 @@ defmodule Blog.AdminController do
     [ most_recent: Blog.Content.get_last(5) ]
   end
 
-  defp admin_assigns(conn, _) do
-    Enum.map get_admin_assigns, fn {k, v} -> assign(conn, :"#{k}", v) end
+  defp assign_admin_assigns(conn, _) do
+    admin_assigns = get_admin_assigns
+    for {key, val} <- admin_assigns, do: assign(conn, :"#{key}", val)
+    conn
   end
 
 end
