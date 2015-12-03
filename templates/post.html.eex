@@ -1,4 +1,8 @@
-<div class="title"><%= @post.title %></div>
-<div class="content">
-  <%= raw @post.body %>
+<div class="single-post">
+  <div class="container">
+    <div class="title"><%= @post.title %></div>
+    <div class="content">
+      <%= raw @post.body %>
+    </div>
+  </div>
 </div>

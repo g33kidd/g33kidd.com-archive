@@ -1,50 +1,59 @@
+@mixin post {
+  padding: 50px;
+  background-color: $light-bg;
+  color: $light-color;
+
+  a {
+    color: $light-link-color;
+  }
+
+  &:nth-child(2n+2) {
+    background-color: $dark-bg;
+    color: $dark-color;
+    a {
+      color: $dark-link-color;
+    }
+    &.active {
+      .title {
+        background-color: $light-bg;
+        color: $light-color;
+      }
+    }
+  }
+
+  .title {
+    font-size: 40px;
+    padding-bottom: 30px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.56;
+  }
+
+  // meaning, when the user scrolls down and the title gets cut off.
+  // should alternate based on sections.
+  &.active {
+    .title {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      padding: 10px;
+    }
+  }
+}
+
+.single-post {
+  @include post;
+  height: 100%;
+}
+
 .posts {
   padding:0px;
   margin: 0px;
 
   .post {
-    padding: 50px;
-    background-color: $light-bg;
-    color: $light-color;
-
-    a {
-      color: $light-link-color;
-    }
-
-    &:nth-child(2n+2) {
-      background-color: $dark-bg;
-      color: $dark-color;
-      a {
-        color: $dark-link-color;
-      }
-      &.active {
-        .title {
-          background-color: $light-bg;
-          color: $light-color;
-        }
-      }
-    }
-
-    .title {
-      font-size: 40px;
-      padding-bottom: 30px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.56;
-    }
-
-    // meaning, when the user scrolls down and the title gets cut off.
-    // should alternate based on sections.
-    &.active {
-      .title {
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        right: 0px;
-        padding: 10px;
-      }
-    }
+    @include post;
   }
 }

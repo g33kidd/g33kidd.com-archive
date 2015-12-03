@@ -42,10 +42,6 @@ post_extra = ContentExtra.compose([
   {:tags, "just,some,tags,for,a,post"}
 ])
 
-extra_example = %{
-  tags: "just,some,tags,for,a,post"
-}
-
 # add_extra would validate the extra. That's why we only create it here.
 ContentPost.add_extra(post, post_extra)
 ```
@@ -64,3 +60,10 @@ The templates directory will be configurable. Preferably the option for third-pa
 Template revisions would just be backups of a template version. Once the user saves a template, it would be added as a revision and a file would be saved somewhere. Under a folder of the version, or... The filename would include the version number:`revisions/<template_name>_v34.html.eex`
 
 See: templates/revisions/ for an example of how this might look.
+
+# Addons?
+
+Addons would be created with either JS or Elixir.
+
+Elixir Addons:
+JS Addons: would be more or less like adding the script tag to the page, nothing special.

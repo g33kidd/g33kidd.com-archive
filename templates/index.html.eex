@@ -1,0 +1,12 @@
+<div class="posts">
+  <%= for post <- @posts do %>
+    <div class="post">
+      <div class="container">
+        <a href="/<%= post.slug %>">
+          <div class="title"><%= post.title %></div>
+        </a>
+        <div class="content"><%= raw post.body %></div>
+      </div>
+    </div>
+  <%= end %>
+</div>
