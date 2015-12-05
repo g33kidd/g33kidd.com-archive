@@ -15,8 +15,10 @@ defmodule Blog.Router do
     get "/", AdminController, :index
     get "/settings", AdminController, :settings
 
-    get "/posts", AdminController, :posts
-    get "/pages", AdminController, :pages
+    get "/:type", AdminController, :content
+    get "/:type/new", AdminController, :new_content
+    get "/:type/edit/:id", AdminController, :edit_content
+    
   end
 
   scope "/", Blog do

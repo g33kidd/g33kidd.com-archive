@@ -26,6 +26,30 @@ defmodule Blog.Content do
     # |> unique_constraint(:slug, on: Blog.Repo, downcase: true)
   end
 
+  def create(params \\ :empty) do
+  end
+
+  def all do
+    query = from c in Blog.Content
+    query |> Repo.all
+  end
+
+  def all(type) when is_atom(type) do
+    query = from c in Blog.Content,
+      where: c.type == ^type
+    query |> Repo.all
+  end
+
+  def get(id) do
+    Repo.get Blog.Content, id: id
+  end
+
+  def get_by(type) when is_atom(type) do
+  end
+
+  def get_by_data(type, key, one \\ :false) when is_atom(type) do
+  end
+
   def get_all do
     Repo.all Blog.Content
   end
@@ -43,7 +67,6 @@ defmodule Blog.Content do
   end
 
   def do_add_map_vals(content) do
-    IO.inspect content
     map = Map.from_struct(content)
 
     Map.new()

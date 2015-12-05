@@ -8,15 +8,34 @@ defmodule Blog.AdminController do
     render conn, "index.html"
   end
 
-  def pages(conn, _) do
-    pages = Blog.Content.get_all_by("page")
-    render conn, "pages.html", pages: pages
+  def content(conn, %{"type" => type}) do
+    type = :"#{type}"
+    content = Blog.Content.all(type)
+    render conn, "#{type}", [
+      {:"#{type}", content}
+      # extras would go here..
+    ]
   end
 
-  def posts(conn, _) do
-    render conn, "posts.html",
-      posts: Blog.Content.get_all_by("post")
+  def new_content(conn, %{"type" => type}) do
+    Blog.Content.create %{
+      type: String.to_atom(type),
+      data: %{}
+    }
   end
+
+  def edit_content(conn, %{"type" => type, "id" => id}) do
+  end
+
+  # def pages(conn, _) do
+  #   pages = Blog.Content.all(:page)
+  #   render conn, "pages.html", pages: pages
+  # end
+  #
+  # def posts(conn, _) do
+  #   render conn, "posts.html",
+  #     posts: Blog.Content.all(:post)
+  # end
 
   # TODO: get the current settings and assing them
   def settings(conn, _) do
@@ -29,8 +48,7 @@ defmodule Blog.AdminController do
   end
 
   defp assign_admin_assigns(conn, _) do
-    admin_assigns = get_admin_assigns
-    for {key, val} <- admin_assigns, do: assign(conn, :"#{key}", val)
+    for {key, val} <- get_admin_assigns, do: assign(conn, :"#{key}", val)
     conn
   end
 

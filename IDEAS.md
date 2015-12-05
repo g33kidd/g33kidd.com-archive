@@ -65,5 +65,8 @@ See: templates/revisions/ for an example of how this might look.
 
 Addons would be created with either JS or Elixir.
 
-Elixir Addons:
+http://stackoverflow.com/questions/13223238/how-do-you-create-and-load-modules-dynamically-at-runtime-in-elixir-or-erlang
+
+
+
 JS Addons: would be more or less like adding the script tag to the page, nothing special.
