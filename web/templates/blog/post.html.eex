@@ -1,1 +1,1 @@
-<%= render_template("post.html", [post: @post]) %>
+<%= render_template("post.html", get_template_assigns(@conn)) %>

@@ -39,6 +39,7 @@ defmodule Blog.Mixfile do
      {:ueberauth, "~> 0.1"},
      {:html_sanitize_ex, "~> 0.1.0"},
      {:exgravatar, "~> 2.0.0"},
+     {:earmark, "~> 0.1.19"},
      {:credo, "~> 0.1.9", only: [:dev, :test]}]
   end
 

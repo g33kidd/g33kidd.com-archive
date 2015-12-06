@@ -34,7 +34,7 @@ defmodule Blog.Content do
     query |> Repo.all
   end
 
-  def all(type) when is_atom(type) do
+  def all(type) do
     query = from c in Blog.Content,
       where: c.type == ^type
     query |> Repo.all

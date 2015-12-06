@@ -70,3 +70,9 @@ http://stackoverflow.com/questions/13223238/how-do-you-create-and-load-modules-d
 
 
 JS Addons: would be more or less like adding the script tag to the page, nothing special.
+
+# Some Template Stuff
+
+For getting the assigns of the connection:
+
+<!-- <%= render_template("main.html", get_template_assigns(@conn)) %> -->

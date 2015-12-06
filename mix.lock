@@ -3,6 +3,7 @@
   "cowlib": {:hex, :cowlib, "1.0.2"},
   "credo": {:hex, :credo, "0.1.10"},
   "decimal": {:hex, :decimal, "1.1.0"},
+  "earmark": {:hex, :earmark, "0.1.19"},
   "ecto": {:hex, :ecto, "1.0.6"},
   "exgravatar": {:hex, :exgravatar, "2.0.0"},
   "fs": {:hex, :fs, "0.9.2"},

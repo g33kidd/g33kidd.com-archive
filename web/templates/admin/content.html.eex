@@ -1,0 +1,7 @@
+<div class="content">
+  <%= for item <- @content do %>
+    <div class="item">
+
+    </div>
+  <% end %>
+</div>

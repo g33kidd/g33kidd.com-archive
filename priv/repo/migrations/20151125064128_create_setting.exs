@@ -3,8 +3,8 @@ defmodule Blog.Repo.Migrations.CreateSetting do
 
   def change do
     create table(:settings) do
-      add :key, :string
-      add :val, :string
+      add :name, :string
+      add :text, :text
       add :map, :map
 
       timestamps
