@@ -18,7 +18,6 @@ defmodule Blog.Router do
     get "/:type", ContentController, :index
     get "/:type/new", ContentController, :new
     get "/:type/edit/:id", ContentController, :edit
-
   end
 
   scope "/", Blog do

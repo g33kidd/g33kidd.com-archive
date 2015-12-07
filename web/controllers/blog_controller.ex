@@ -22,13 +22,16 @@ defmodule Blog.BlogController do
   end
 
   def display_content(conn, slug) do
-    content = Content.get_single slug
-    content_type = :"#{content.type}"
+    content = Content.get_single(slug)
+    |> Map.from_struct()
+    |> Content.to_atom()
+    |> Blog.ContentExt.parse()
+
     content_assigns = []
-    |> Dict.put(content_type, Content.get_data_for(content))
+    |> Dict.put(content.type, Content.get_data_for(content))
     |> Dict.put(:slug, content.slug)
 
-    conn |> put_layout("blank.html")
+    put_layout(conn, "blank.html")
     render conn, "#{content.type}.html", content_assigns
   end
 
