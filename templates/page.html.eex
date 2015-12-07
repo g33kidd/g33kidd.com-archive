@@ -1,4 +1,0 @@
-<div class="title"><%= @page.title %></div>
-<div class="content">
-  <%= raw @page.html %>
-</div>
