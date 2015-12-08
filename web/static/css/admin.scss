@@ -1,8 +1,10 @@
 @import "global";
-@import "components/admin_header";
+@import "admin/header";
+@import "admin/posts";
 
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 *, *:after, *:before {
@@ -10,6 +12,8 @@ html {
 }
 
 body {
+  height: 100%;
+  background-color: #F5F5F5;
   font-family: 'Raleway', sans-serif;
   .hidden {
     display: none !important;

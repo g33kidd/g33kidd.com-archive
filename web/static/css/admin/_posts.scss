@@ -1,0 +1,39 @@
+.list-posts {
+  margin: 20px 0px;
+
+  .post {
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 1px 0 #999999;
+    border-radius: 1px;
+
+    .info {
+      .title {
+        display: block;
+        font-size: 20px;
+        padding: 10px 0;
+
+        a {
+          text-decoration: none;
+          color: #333;
+          &:hover {
+            color: #999;
+          }
+        }
+
+        .view {
+          color: orange;
+          font-size: 14px;
+          margin-left: 10px;
+        }
+      }
+
+      .short {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+
+}

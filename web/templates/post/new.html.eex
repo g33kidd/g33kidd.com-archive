@@ -1,10 +1,4 @@
-<%= form_for @post, post_path(@conn, :create), fn f -> %>
-
-  <%= text_input f, :title, class: "input" %>
-  <%= text_input f, :body, class: "input" %>
-  <%= text_input f, :slug, class: "input" %>
-  <%= hidden_input f, :user_id, value: "0" %>
-
-  <%= submit "Submit", class: "btn" %>
-
-<% end %>
+<div class="container">
+  <h1>New Post</h1>
+  <%= render "form.html", post: @post, action: @action %>
+</div>

@@ -1,0 +1,23 @@
+<div class="post-editor">
+  <%= form_for @post, @action, fn f -> %>
+    <%= hidden_input f, :user_id, value: "0" %>
+
+    <div class="input">
+      <label for="post-title">Title</label>
+      <%= text_input f, :title, id: "post-title", class: "title" %>
+    </div>
+
+    <div class="editor">
+      <textarea class="content-editor" id="editor"><%= @post.model.body %></textarea>
+      <%= hidden_input f, :body, id: "post-body" %>
+    </div>
+
+    <div class="input">
+      <label for="post-slug">URL Slug</label>
+      <%= text_input f, :slug, id: "post-slug", class: "slug" %>
+    </div>
+
+    <%= submit "Save", class: "save-post" %>
+
+  <% end %>
+</div>

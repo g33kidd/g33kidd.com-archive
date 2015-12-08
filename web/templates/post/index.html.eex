@@ -7,8 +7,9 @@
           <a href="<%= post_path(@conn, :show, post.slug) %>"
             class="view" target="_blank">view post</a>
         </span>
-        <span class="short"><%= post.data.short_text %></span>
+        <span class="short"><%= post.data.small %>...</span>
       </div>
+      <div class="clear"></div>
     </div>
   <%= end %>
 </div>

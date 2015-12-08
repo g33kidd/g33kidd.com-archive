@@ -29,4 +29,17 @@ $(document).ready(() => {
       .replace(/^-+/, '')
       .replace(/-+$/, '')
   }
+
+  var simplemde = new SimpleMDE();
+
+  $("#post-title").on('keyup', function() {
+    var slugged_title = slugify($(this).val())
+    console.log(slugged_title)
+    $("#post-slug").val(slugged_title)
+  })
+
+  simplemde.codemirror.on('change', function() {
+    $("#post-body").val(simplemde.value())
+  })
+
 })

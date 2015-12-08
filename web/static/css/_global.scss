@@ -4,3 +4,17 @@
 @import "susy";
 
 @import "components/grid";
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+  content: "";
+  display: block;
+}

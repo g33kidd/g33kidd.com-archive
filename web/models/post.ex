@@ -39,14 +39,18 @@ defmodule Blog.Post do
       |> Enum.take(150)
       |> Enum.join(" ")
 
+    small_text = short |> String.split() |> Enum.take(45) |> Enum.join(" ")
+
     basic = html |> HtmlSanitizeEx.basic_html()
 
     data = %{
       html: html,
       short_text: short,
+      small: small_text,
       original: post.body,
       basic_html: basic
     }
+
     %{ post | data: data }
   end
 
