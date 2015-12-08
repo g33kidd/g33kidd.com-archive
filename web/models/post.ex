@@ -1,11 +1,14 @@
 defmodule Blog.Post do
   use Blog.Web, :model
 
+  require Logger
+
   schema "posts" do
     field :title, :string
     field :body, :string
     field :user_id, :integer
     field :slug, :string
+    field :data, :map
 
     timestamps
   end
@@ -22,10 +25,36 @@ defmodule Blog.Post do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> unique_constraint(:slug)
+  end
+
+  # Adds different fields to a post entry
+  def do_extensions(post) do
+    html = post.body |> Earmark.to_html()
+    # Logger.info("#{inspect html}")
+
+    short = html
+      |> HtmlSanitizeEx.strip_tags()
+      |> String.split()
+      |> Enum.take(150)
+      |> Enum.join(" ")
+
+    basic = html |> HtmlSanitizeEx.basic_html()
+
+    data = %{
+      html: html,
+      short_text: short,
+      original: post.body,
+      basic_html: basic
+    }
+    %{ post | data: data }
   end
 
   def all() do
-    Blog.Repo.all Blog.Post
+    posts = Blog.Repo.all(Blog.Post)
+    posts = Enum.map(posts, fn post -> do_extensions(post) end)
+    posts
+    # Enum.each(posts, fn(post) -> Blog.Post.do_extensions(post) end)
   end
 
   def get(id) when is_number(id) do

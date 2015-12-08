@@ -7,9 +7,11 @@ defmodule Blog.Repo.Migrations.CreatePost do
       add :body, :text
       add :user_id, :integer
       add :slug, :string
+      add :data, :map
 
       timestamps
     end
 
+    create unique_index(:posts, [:slug])
   end
 end

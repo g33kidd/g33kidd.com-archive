@@ -22,33 +22,25 @@ defmodule Blog.Setting do
   with no validation performed.
   """
   def changeset(model, params \\ :empty) do
-    model |> cast(params, @required_fields, @optional_fields)
+    model
+    |> cast(params, @required_fields, @optional_fields)
   end
 
   def create(key, val) when is_map(val) do
-    setting = Setting.changeset Setting, %{name: key, map: val}
-    Repo.insert setting
+    setting = Setting.changeset %Setting{},
+      %{ name: key, map: val }
+    Repo.insert! setting
   end
 
   def create(key, val) when is_bitstring(val) do
-    setting = Setting.changeset Setting, %{name: key, text: val}
-    Repo.insert setting
+    setting = Setting.changeset %Setting{},
+      %{ name: key, val: val }
+    Repo.insert! setting
   end
 
   # gets a setting by it's key. Returns a `val` or a `map`.
   def get(key) do
-    setting = Repo.get_by! Setting, name: key
-    Dict.get_lazy(setting, :val, fn -> :map end)
-  end
-
-  @doc """
-
-    Will return a Map of all the settings:
-    %{key: val}
-
-    If `val` does not exist, we'll add `map` to the final Map.
-
-  """
-  def get_all(except \\ [], only \\ []) do
+    Repo.get_by! Setting, name: key
+    |> Dict.get_lazy(:val, fn -> :map end)
   end
 end

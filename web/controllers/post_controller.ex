@@ -14,13 +14,7 @@ defmodule Blog.PostController do
   end
 
   def show(conn, %{"slug" => slug}) do
-    post = Post.get(slug)
-    post = Map.from_struct(post)
-    # post = Enum.each(post, fn{k,v} -> {String.to_atom(k), v} end)
-
-    html = Earmark.to_html(post.body)
-    post = post |> Dict.put(:html, html)
-
+    post = Post.get(slug) |> Post.do_extensions()
     render conn, "show.html", post: post
   end
 

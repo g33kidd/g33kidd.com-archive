@@ -8,6 +8,7 @@ defmodule Blog.PageController do
   end
 
   def home(conn, _) do
-    render conn, "home.html"
+    render conn, "home.html",
+      posts: Blog.Post.all
   end
 end

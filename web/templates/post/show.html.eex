@@ -2,7 +2,7 @@
   <div class="container">
     <div class="title"><%= @post.title %></div>
     <div class="content">
-      <%= raw @post.html %>
+      <%= raw @post.data.html %>
     </div>
   </div>
 </div>

@@ -5,7 +5,7 @@
         <a href="/<%= post.slug %>">
           <div class="title"><%= post.title %></div>
         </a>
-        <div class="content"><%= raw post.body %></div>
+        <div class="content"><%= post.data.short_text %></div>
       </div>
     </div>
   <%= end %>
