@@ -26,6 +26,7 @@ defmodule Blog.Router do
     get "/posts/new", PostController, :new
     get "/posts/edit/:id", PostController, :edit
 
+    put "/posts", PostController, :update
     post "/posts", PostController, :create
     delete "/posts", PostController, :destroy
 

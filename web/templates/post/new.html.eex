@@ -1,4 +1,4 @@
-<%= form_for @changeset, post_path(@conn, :create), fn f -> %>
+<%= form_for @post, post_path(@conn, :create), fn f -> %>
 
   <%= text_input f, :title, class: "input" %>
   <%= text_input f, :body, class: "input" %>

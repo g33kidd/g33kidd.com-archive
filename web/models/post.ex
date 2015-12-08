@@ -51,17 +51,10 @@ defmodule Blog.Post do
   end
 
   def all() do
-    posts = Blog.Repo.all(Blog.Post)
-    posts = Enum.map(posts, fn post -> do_extensions(post) end)
-    posts
-    # Enum.each(posts, fn(post) -> Blog.Post.do_extensions(post) end)
+    Blog.Repo.all(Blog.Post) |> Enum.map(fn(post) -> do_extensions(post) end)
   end
 
-  def get(id) when is_number(id) do
-    Blog.Repo.get_by! Blog.Post, id: id
-  end
+  def get([id: id]), do: Blog.Repo.get_by!(Blog.Post, id: id)
+  def get([slug: slug]), do: Blog.Repo.get_by!(Blog.Post, slug: slug)
 
-  def get(slug) when is_bitstring(slug) do
-    Blog.Repo.get_by! Blog.Post, slug: slug
-  end
 end

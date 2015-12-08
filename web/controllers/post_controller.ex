@@ -14,13 +14,13 @@ defmodule Blog.PostController do
   end
 
   def show(conn, %{"slug" => slug}) do
-    post = Post.get(slug) |> Post.do_extensions()
+    post = Post.get([slug: slug]) |> Post.do_extensions()
     render conn, "show.html", post: post
   end
 
   # admin page...
   def edit(conn, %{"id" => id}) do
-    post = Post.get(id)
+    post = Post.changeset Post.get([id: id])
     conn
     |> put_layout("admin.html")
     |> render("edit.html", [post: post])
@@ -29,11 +29,11 @@ defmodule Blog.PostController do
   # admin page...
   def new(conn, _params) do
     user = get_session(conn, :current_user)
-    changeset = Post.changeset %Post{}, %{}
+    post = Post.changeset %Post{}, %{}
 
     conn
     |> put_layout("admin.html")
-    |> render("new.html", [changeset: changeset])
+    |> render("new.html", [post: post])
   end
 
   def update(conn, %{"post" => post_params}) do

@@ -14,13 +14,15 @@
   <body>
 
     <header class="admin-header">
-      <ul>
+      <ul class="nav">
         <li><a href="<%= post_path(@conn, :index) %>">View Posts</a></li>
         <li><a href="<%= post_path(@conn, :new) %>">New Post</a></li>
       </ul>
     </header>
 
-    <%= @inner %>
+    <div class="container">
+      <%= @inner %>
+    </div>
 
   </body>
 </html>
