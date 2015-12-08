@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,11 +9,14 @@
 
     <title>Dashboard</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/admin.css") %>">
+    <!-- <script src="<%= static_path(@conn, "/js/angular.js") %>"></script> -->
   </head>
 
   <body>
+    <p>Nothing here {{'yet' + '!'}}</p>
+    <p>1 + 2 = {{ 1 + 2 }}</p>
 
-    <header class="admin-header">
+    <!-- <header class="admin-header">
       <div class="container">
         <ul class="nav">
           <li><a href="<%= post_path(@conn, :index) %>">View Posts</a></li>
@@ -24,11 +27,10 @@
 
     <div class="container">
       <%= @inner %>
-    </div>
+    </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="//cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
   </body>
 </html>

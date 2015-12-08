@@ -19,27 +19,16 @@ import "deps/phoenix_html/web/static/js/phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
-$(document).ready(() => {
+// $(document).ready(() => {
   // Replaces spaces and trim chars
-  var slugify = (string) => {
-    return string.toString().toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^\w\-]+/g, '')
-      .replace(/\-\-+/g, '-')
-      .replace(/^-+/, '')
-      .replace(/-+$/, '')
-  }
+  // var slugify = (string) => {
+  //   return string.toString().toLowerCase()
+  //     .replace(/\s+/g, '-')
+  //     .replace(/[^\w\-]+/g, '')
+  //     .replace(/\-\-+/g, '-')
+  //     .replace(/^-+/, '')
+  //     .replace(/-+$/, '')
+  // }
 
-  var simplemde = new SimpleMDE();
 
-  $("#post-title").on('keyup', function() {
-    var slugged_title = slugify($(this).val())
-    console.log(slugged_title)
-    $("#post-slug").val(slugged_title)
-  })
-
-  simplemde.codemirror.on('change', function() {
-    $("#post-body").val(simplemde.value())
-  })
-
-})
+// })

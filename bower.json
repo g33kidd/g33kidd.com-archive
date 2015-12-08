@@ -18,6 +18,8 @@
   "dependencies": {
     "susy": "~2.2.7",
     "support-for": "~1.0.3",
-    "normalize-scss": "normalize.scss#~4.0.3"
+    "normalize-scss": "normalize.scss#~4.0.3",
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8"
   }
 }
