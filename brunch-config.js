@@ -54,8 +54,6 @@ exports.config = {
       options: {
         includePaths: [
           'bower_components/support-for/sass',
-          'bower_components/normalize-scss/sass',
-          'bower_components/normalize-scss/sass/normalize',
           'bower_components/susy/sass'
         ]
       }

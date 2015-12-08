@@ -1,1 +1,0 @@
-<%= render_template("index.html", get_template_assigns(@conn)) %>

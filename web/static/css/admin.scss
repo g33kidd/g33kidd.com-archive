@@ -1,9 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700,400);
-@import "settings";
-@import "susy";
-@import "normalize";
-@include normalize();
-
+@import "global";
 @import "components/admin_header";
 
 html {

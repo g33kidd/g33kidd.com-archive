@@ -1,9 +1,4 @@
-@import "settings";
-@import "normalize";
-@import "susy";
-
-@include normalize();
-
+@import "global";
 @import "components/grid";
 @import "components/page";
 @import "components/post";
