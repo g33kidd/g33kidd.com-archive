@@ -6,25 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Dashboard</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/admin.css") %>">
   </head>
 
   <body>
+    <header class="admin-header" id="admin-header"></header>
+    <div class="container" id="container"></div>
 
-    <!-- <header class="admin-header">
-      <ul class="nav">
-        <li><a href="<%= post_path(@conn, :index) %>">View Posts</a></li>
-        <li><a href="<%= post_path(@conn, :new) %>">New Post</a></li>
-      </ul>
-    </header>
-
-    <div class="container">
-      <%= @inner %>
-    </div> -->
-    <div id="container"></div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

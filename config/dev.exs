@@ -12,7 +12,7 @@ config :blog, Blog.Endpoint,
   code_reloader: true,
   cache_static_lookup: false,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
+  watchers: [node: ["node_modules/webpack/bin/webpack.js", "--watch", "--color", "--progress"]]
 
 # Watch static and templates for browser reloading.
 config :blog, Blog.Endpoint,
