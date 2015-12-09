@@ -3,6 +3,12 @@ exports.config = {
   files: {
     javascripts: {
       joinTo: "js/app.js"
+      // order: {
+      //   before: [
+      //     "bower_components/react/react.js",
+      //     "bower_components/react/react-dom.js"
+      //   ]
+      // }
 
       // To use a separate vendor.js bundle, specify two files path
       // https://github.com/brunch/brunch/blob/stable/docs/config.md#files
@@ -35,6 +41,7 @@ exports.config = {
       "deps/phoenix/web/static",
       "deps/phoenix_html/web/static",
       "web/static",
+      "bower_components/react",
       "test/static"
     ],
 

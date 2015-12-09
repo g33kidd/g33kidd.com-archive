@@ -18,6 +18,12 @@
   "dependencies": {
     "susy": "~2.2.7",
     "support-for": "~1.0.3",
-    "normalize-scss": "normalize.scss#~4.0.3"
+    "normalize-scss": "normalize.scss#~4.0.3",
+    "react": "~0.14.3"
+  },
+  "overrides": {
+    "react": {
+      "main": "react-with-addons.js"
+    }
   }
 }
