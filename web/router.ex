@@ -31,4 +31,13 @@ defmodule Blog.Router do
     # get "/:slug", PostController, :show
     # get "/:slug", PageController, :show
   end
+
+  # defp put_user_token(conn, _) do
+  #   if current_user = conn.assigns[:current_user] do
+  #     token = Phoenix.Token.sign(conn, "user socket", current_user.id)
+  #     assign(conn, :user_token, token)
+  #   else
+  #     conn
+  #   end
+  # end
 end
