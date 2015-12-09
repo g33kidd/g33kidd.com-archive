@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,500,700,400);
 @import "./settings";
 @import "~susy/sass/susy";
+@import "~normalize.css/normalize.css";
 
 @import "./components/grid";
 @import "./components/admin_header";
