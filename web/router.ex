@@ -21,23 +21,14 @@ defmodule Blog.Router do
   scope "/admin", Blog do
     pipe_through :admin
 
-    get "/", AdminController, :index
-    get "/posts", PostController, :index
-    get "/posts/new", PostController, :new
-    get "/posts/edit/:id", PostController, :edit
-
-    put "/posts", PostController, :update
-    post "/posts", PostController, :create
-    delete "/posts", PostController, :destroy
-
-    get "/settings", AdminController, :settings
+    get "/*anything", AdminController, :index
   end
 
   scope "/", Blog do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :home
-    get "/:slug", PostController, :show
-    get "/:slug", PageController, :show
+    # get "/:slug", PostController, :show
+    # get "/:slug", PageController, :show
   end
 end

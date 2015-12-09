@@ -2,7 +2,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './web/static/js/index.jsx',
+  entry: './web/static/js/index.js',
   output: {
     filename: 'app.js',
     path: './priv/static/js'
@@ -22,7 +22,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         loaders: ["babel"],
         exclude: /node_modules/
       },

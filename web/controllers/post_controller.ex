@@ -47,11 +47,11 @@ defmodule Blog.PostController do
       {:ok, post} ->
         conn
         |> put_flash(:info, "Created post!")
-        |> redirect(to: post_path(conn, :index))
+        |> redirect(to: "/")
       {:error, changeset} ->
         conn
         |> assign(:changeset, changeset)
-        |> redirect(to: post_path(conn, :new))
+        |> redirect(to: "/")
     end
   end
 

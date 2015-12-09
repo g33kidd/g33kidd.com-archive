@@ -10,9 +10,7 @@
   </head>
 
   <body>
-    <header class="admin-header" id="admin-header"></header>
-    <div class="container" id="container"></div>
-
+    <div id="app"></div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

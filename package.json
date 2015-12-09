@@ -14,11 +14,15 @@
   },
   "dependencies": {
     "classnames": "^2.2.0",
+    "history": "~1.13.x",
     "jquery": "^2.1.4",
     "moment": "^2.10.6",
     "normalize.css": "^3.0.3",
     "react": "^0.14.0",
     "react-addons-css-transition-group": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "react-router": "^1.0.2",
+    "reqwest": "^2.0.5",
+    "susy": "^2.2.6"
   }
 }

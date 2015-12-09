@@ -3,8 +3,8 @@
     <div class="post">
       <div class="info left">
         <span class="title">
-          <a href="<%= post_path(@conn, :edit, post.id) %>"><%= post.title %></a>
-          <a href="<%= post_path(@conn, :show, post.slug) %>"
+          <a href=""><%= post.title %></a>
+          <a href=""
             class="view" target="_blank">view post</a>
         </span>
         <span class="short"><%= post.data.short_text %></span>

@@ -10,9 +10,16 @@ header.admin-header {
     list-style: none;
     margin: 0px;
     padding: 10px 0px;
+    padding-left: 0px;
     li {
       display: inline-block;
       padding: 5px 5px;
+      &:first-of-type {
+        padding-left: 0px;
+        a {
+          padding-left: 0px;
+        }
+      }
       a {
         font-size: 18px;
         color: #FFF;
