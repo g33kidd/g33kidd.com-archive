@@ -7,6 +7,7 @@ import App from './App'
 import NewPostPage from './components/Posts/NewPostPage'
 import EditPostPage from './components/Posts/EditPostPage'
 import PostPage from './components/Posts/PostPage'
+import SettingsPage from './components/Settings/SettingsPage'
 
 export default class Root extends Component {
   render() {
@@ -17,6 +18,8 @@ export default class Root extends Component {
           <Route name='posts' path='/posts' component={PostPage} />
           <Route name='newPost' path='/posts/new' component={NewPostPage} />
           <Route name="editPost" path='/posts/edit/:id' component={EditPostPage} />
+
+          <Route name='settings' path='/settings' component={SettingsPage} />
         </Route>
       </Router>
     )

@@ -10,4 +10,4 @@ import Root from './Root'
 const rootEl = document.getElementById('root')
 const history = useBasename(createHistory)({ basename: "/admin" });
 
-ReactDOM.render(<Root history={history} />, document.getElementById("app"))
+ReactDOM.render(<Root history={history} />, rootEl)

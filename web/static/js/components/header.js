@@ -9,7 +9,8 @@ export default class Header extends React.Component {
           <ul className="nav">
             <li><Link to="">Dashboard</Link></li>
             <li><Link to="posts">Posts</Link></li>
-            <li><Link to="newPost">New Post</Link></li>
+            <li><Link to="posts/new">New Post</Link></li>
+            <li><Link to="settings">Settings</Link></li>
           </ul>
         </div>
       </header>

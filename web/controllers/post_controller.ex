@@ -8,9 +8,13 @@ defmodule Blog.PostController do
 
   # admin page...
   def index(conn, _) do
-    conn
-    |> put_layout("admin.html")
-    |> render("index.html", [posts: Post.all])
+    posts = Post.all() |> Blog.PostSerializer.format(conn)
+    json conn, posts
+  end
+
+  def get(conn, %{"id" => id}) do
+    post = Post.get([id: id]) |> Blog.PostSerializer.format(conn)
+    json conn, post
   end
 
   def show(conn, %{"slug" => slug}) do
