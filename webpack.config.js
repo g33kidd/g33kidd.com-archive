@@ -11,6 +11,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx', '.es6'],
     modulesDirectories: [
       './node_modules',
+      './node_modules/simplemde/src/js',
       './deps/phoenix/web/static/js',
       './deps/phoenix_html/web/static/js'
     ],
@@ -34,6 +35,14 @@ module.exports = {
           "css",
           "autoprefixer?browsers=last 3 versions",
           "sass?outputStyle=expanded"
+        ]
+      },
+
+      {
+        test: /\.css$/,
+        loaders: [
+          "style",
+          "css"
         ]
       }
 
