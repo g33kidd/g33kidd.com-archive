@@ -1,30 +1,25 @@
 import AppDispatcher from '../AppDispatcher'
 import ActionTypes from '../constants/ActionTypes'
 import APIUtils from '../utils/APIUtils'
+import history from '../History'
 
 module.exports = {
-
-  addPost: function() {
-    AppDispatcher.handleViewAction({
-      actionType: ActionTypes.NEW_POST
+  getPosts() {
+    AppDispatcher.dispatch({
+      source: "VIEW_ACTION",
+      action: ActionTypes.GET_POSTS
     })
+
+    APIUtils.getPosts()
   },
 
-  savePost: function(text) {
-    AppDispatcher.handleViewAction({
-      actionType: ActionTypes.SAVE_POST,
-      text: text
-    })
-  },
-
-  removePost: function() {},
-
-  getPost: function() {
-    AppDispatcher.handleViewAction({
-      actionType: ActionTypes.GET_POST
+  newPost() {
+    AppDispatcher.dispatch({
+      source: "VIEW_ACTION",
+      action: ActionTypes.NEW_POST
     })
 
-    APIUtils.get("/posts")
+    // APIUtils.createPost()
+    history.replaceState(null, '/posts')
   }
-
 }

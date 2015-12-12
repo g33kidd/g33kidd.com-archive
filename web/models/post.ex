@@ -2,6 +2,7 @@ defmodule Blog.Post do
   use Blog.Web, :model
 
   require Logger
+  alias Blog.Post
 
   schema "posts" do
     field :title, :string
@@ -49,18 +50,29 @@ defmodule Blog.Post do
     %{ post | data: data }
   end
 
+  def create(post) do
+    changeset = changeset(%Post{}, post)
+    case Blog.Repo.insert changeset do
+      {:ok, doc} -> {:ok, doc}
+      {:error, changeset} -> {:error, changeset.errors}
+    end
+  end
+
   # gets all posts
   # and runs markdown, etc... on each post
   def all() do
-    Blog.Repo.all(Blog.Post) |> Enum.map(fn(post) -> do_extensions(post) end)
+    Blog.Repo.all(Post)
+    |> Enum.map(fn(post) -> do_extensions(post) end)
   end
 
   # get post by `id`
-  def get[id: id], do: Blog.Repo.get_by(Blog.Post, id: id)
-  def get!([id: id]), do: Blog.Repo.get_by!(Blog.Post, id: id)
+  # def get([id: id]), do: Blog.Repo.get_by(Blog.Post, id: id)
+  # def get!([id: id]), do: Blog.Repo.get_by!(Blog.Post, id: id)
+  def get_by_slug(slug) do
+    Blog.Repo.get_by(Post, slug: slug)
+  end
 
-  # get post by `slug`
-  def get([slug: slug]), do: Blog.Repo.get_by(Blog.Post, slug: slug)
-  def get!([slug: slug]), do: Blog.Repo.get_by!(Blog.Post, slug: slug)
-
+  def get_by_id(id) do
+    Blog.Repo.get_by(Post, id: id)
+  end
 end

@@ -3,6 +3,10 @@ import PostView from './PostView'
 
 export default class PostPage extends React.Component {
   render() {
-    return <PostView />
+    return (
+      <div className="post-page">
+        <PostView />
+      </div>
+    )
   }
 }

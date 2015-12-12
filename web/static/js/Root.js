@@ -16,9 +16,7 @@ export default class Root extends Component {
       <Router history={history}>
         <Route name='admin' path='/' component={App}>
           <Route name='posts' path='/posts' component={PostPage} />
-          <Route name='newPost' path='/posts/new' component={NewPostPage} />
-          <Route name="editPost" path='/posts/edit/:id' component={EditPostPage} />
-
+          <Route name="editPost" path='/posts/:id' component={EditPostPage} />
           <Route name='settings' path='/settings' component={SettingsPage} />
         </Route>
       </Router>

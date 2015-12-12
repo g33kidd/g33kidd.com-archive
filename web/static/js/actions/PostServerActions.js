@@ -2,9 +2,10 @@ import AppDispatcher from '../AppDispatcher'
 import ActionTypes from '../constants/ActionTypes'
 
 module.exports = {
-  receivePost: function(response) {
-    AppDispatcher.handleServerAction({
-      actionType: ActionTypes.GET_POST_RESPONSE,
+  receivePosts: function(response) {
+    AppDispatcher.dispatch({
+      source: "SERVER_ACTION",
+      action: ActionTypes.GET_POST_RESPONSE,
       response: response
     })
   }

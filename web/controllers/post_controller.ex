@@ -13,8 +13,25 @@ defmodule Blog.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Post.get([id: id]) |> Blog.PostSerializer.format(conn)
+    post = Post.get_by_id(id)
+    post = Blog.PostSerializer.format(post)
     json conn, post
+  end
+
+  def create(conn, %{"post" => post}) do
+    post = %{
+      title: post["title"],
+      body: post["body"],
+      slug: post["slug"],
+      user_id: 0
+    }
+
+    case Blog.Post.create(post) do
+      {:ok, post} ->
+        json conn, Blog.PostSerializer.format(post)
+      {:error, errors} ->
+        json conn, errors
+    end
   end
 
   # admin page...

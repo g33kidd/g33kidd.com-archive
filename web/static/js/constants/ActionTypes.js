@@ -6,5 +6,6 @@ export default keyMirror({
   SAVE_POST: null,
   REMOVE_POST: null,
   GET_POST: null,
+  GET_POSTS: null,
   GET_POST_RESPONSE: null
 })

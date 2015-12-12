@@ -21,7 +21,7 @@ defmodule Blog.Router do
   scope "/", Blog do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :home
+    get "/", SiteController, :index
     get "/:slug", SiteController, :display
   end
 
@@ -35,6 +35,6 @@ defmodule Blog.Router do
     # put "/posts/:id", PostController, :update
     # delete "/posts/:id", PostController, :destroy
 
-    resources "/posts", PostController
+    resources "/posts", PostController, as: :api_posts
   end
 end

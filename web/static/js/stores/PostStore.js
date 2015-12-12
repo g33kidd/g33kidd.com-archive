@@ -2,6 +2,7 @@ import AppDispatcher from '../AppDispatcher'
 import ActionTypes from '../constants/ActionTypes'
 import ObjectAssign from 'object-assign'
 import { EventEmitter } from 'events'
+import _ from 'underscore'
 
 const CHANGE_EVENT = 'change';
 var _store = {
@@ -24,12 +25,10 @@ const PostStore = ObjectAssign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(payload) {
-  let action = payload.action
-
-  switch(action.actionType) {
+  switch(payload.action) {
     case ActionTypes.GET_POST_RESPONSE:
-      let newPost = action.response.results[0]
-      _store.list.push(newPost)
+      let posts = payload.response
+      _store.list = posts
       PostStore.emit(CHANGE_EVENT)
       break;
 

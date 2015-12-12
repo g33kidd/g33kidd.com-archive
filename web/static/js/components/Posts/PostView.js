@@ -1,23 +1,29 @@
 import React from 'react'
 import PostList from './PostList'
 
+import PostStore from '../../stores/PostStore'
+
 const PostView = React.createClass({
   getInitialState() {
-    return {data: []}
+    return PostStore.getList()
   },
+
   componentDidMount() {
-    this.setState({
-      data: [
-        {id: 1, title: "Fake Title", body: "Fake Content"},
-        {id: 2, title: "Fake Title", body: "Fake Content"},
-        {id: 3, title: "Fake Title", body: "Fake Content"},
-      ]
-    })
+    PostStore.addChangeListener(this._onChange)
   },
+
+  componentWillUnmount() {
+    PostStore.removeChangeListener(this._onChange)
+  },
+
+  _onChange() {
+    this.setState(PostStore.getList())
+  },
+
   render() {
     return (
       <div className="post-view">
-        <PostList data={this.state.data} />
+        <PostList list={this.state.list} />
       </div>
     )
   }
