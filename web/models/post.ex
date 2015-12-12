@@ -31,7 +31,6 @@ defmodule Blog.Post do
   # Adds different fields to a post entry
   def do_extensions(post) do
     html = post.body |> Earmark.to_html()
-    # Logger.info("#{inspect html}")
 
     short = html
       |> HtmlSanitizeEx.strip_tags()
@@ -50,11 +49,18 @@ defmodule Blog.Post do
     %{ post | data: data }
   end
 
+  # gets all posts
+  # and runs markdown, etc... on each post
   def all() do
     Blog.Repo.all(Blog.Post) |> Enum.map(fn(post) -> do_extensions(post) end)
   end
 
-  def get([id: id]), do: Blog.Repo.get_by!(Blog.Post, id: id)
-  def get([slug: slug]), do: Blog.Repo.get_by!(Blog.Post, slug: slug)
+  # get post by `id`
+  def get[id: id], do: Blog.Repo.get_by(Blog.Post, id: id)
+  def get!([id: id]), do: Blog.Repo.get_by!(Blog.Post, id: id)
+
+  # get post by `slug`
+  def get([slug: slug]), do: Blog.Repo.get_by(Blog.Post, slug: slug)
+  def get!([slug: slug]), do: Blog.Repo.get_by!(Blog.Post, slug: slug)
 
 end

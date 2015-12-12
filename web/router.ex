@@ -22,23 +22,19 @@ defmodule Blog.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :home
-    # get "/:slug", PostController, :show
-    # prefered... that way it could handle both posts and pages.
-    # get "/:slug", SiteController, :display
-    # ...
+    get "/:slug", SiteController, :display
   end
 
   # API -----------------------
   scope "/api", Blog do
     pipe_through :api
 
-    post "/posts", PostController, :create
-    get "/posts", PostController, :index
-    get "/posts/:id", PostController, :get
-    put "/posts/:id", PostController, :update
-    delete "/posts/:id", PostController, :destroy
+    # post "/posts", PostController, :create
+    # get "/posts", PostController, :index
+    # get "/posts/:id", PostController, :show
+    # put "/posts/:id", PostController, :update
+    # delete "/posts/:id", PostController, :destroy
 
-    # resources "/posts", PostController
-    # add some resources here..
+    resources "/posts", PostController
   end
 end

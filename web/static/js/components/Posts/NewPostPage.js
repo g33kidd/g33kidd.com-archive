@@ -14,18 +14,35 @@ const PostForm = React.createClass({
     this.setState({ body: newBody })
   },
 
+  slugifyString(string) {
+    return string.toString().toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^\w\-]+/g, '')
+      .replace(/\-\-+/g, '-')
+      .replace(/^-+/, '')
+      .replace(/-+$/, '')
+  },
+
   updateSlug(newSlug) {
-    this.setState({ slug: newSlug })
+    let slug = this.slugifyString(newSlug);
+    console.log(slug)
+    this.setState({ slug: slug })
+  },
+
+  handleTitleChange(e) {
+    console.log(e.target.value)
+
+    this.updateSlug(e.target.value)
   },
 
   render() {
     return (
       <div className="post-form">
         <div>
-          <input type="text" className="input title" />
+          <input type="text" className="input title" onChange={this.handleTitleChange} />
         </div>
         <div>
-          <input type="text" className="input slug" />
+          <input type="text" maxLength="20" className="input slug" value={this.state.slug} />
         </div>
         <div>
           <MDEditor />
