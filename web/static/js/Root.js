@@ -4,10 +4,10 @@ import { Router, Route } from 'react-router'
 import App from './App'
 
 // Add the pages here..
-import NewPostPage from './components/Posts/NewPostPage'
-import EditPostPage from './components/Posts/EditPostPage'
-import PostPage from './components/Posts/PostPage'
-import SettingsPage from './components/Settings/SettingsPage'
+import NewPostPage from './components/NewPostPage'
+import EditPostPage from './components/EditPostPage'
+import PostPage from './components/PostPage'
+import SettingsPage from './components/SettingsPage'
 
 export default class Root extends Component {
   render() {
