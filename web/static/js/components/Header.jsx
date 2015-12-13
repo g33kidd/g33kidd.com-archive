@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
-import PostActions from '../actions/PostActions'
+
+import PostStore from '../stores/PostStore'
+// import history from '../History'
 
 export default class Header extends React.Component {
   _newPost() {
-    PostActions.newPost();
+    PostStore.newPost()
   }
 
   render() {

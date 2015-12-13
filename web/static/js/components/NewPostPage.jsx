@@ -1,9 +1,5 @@
 import React, { Component } from 'react'
-// import 'simplemde/src/css/simplemde.css'
-// import editor from '../../editor'
-
-import MarkdownEditor from '../Editor/MarkdownEditor'
-import MDEditor from '../Editor/MDEditor'
+import MDEditor from './MDEditor'
 
 const PostForm = React.createClass({
   getInitialState() {

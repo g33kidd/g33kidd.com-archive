@@ -1,5 +1,9 @@
 import Reflux from 'reflux'
 
-const Actions = Reflux.createActions([
-  'getPosts'
+const PostActions = Reflux.createActions([
+  'getPosts',
+  'newPost',
+  'updatePost'
 ])
+
+export default PostActions

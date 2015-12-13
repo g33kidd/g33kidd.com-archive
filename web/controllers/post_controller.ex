@@ -30,6 +30,7 @@ defmodule Blog.PostController do
       {:ok, post} ->
         json conn, Blog.PostSerializer.format(post)
       {:error, errors} ->
+        errors = errors |> Enum.into(%{})
         json conn, errors
     end
   end

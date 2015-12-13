@@ -1,40 +1,41 @@
-import AppDispatcher from '../AppDispatcher'
-import ActionTypes from '../constants/ActionTypes'
-import ObjectAssign from 'object-assign'
-import { EventEmitter } from 'events'
-import _ from 'underscore'
+import Reflux from 'reflux'
+import request from 'reqwest'
 
-const CHANGE_EVENT = 'change';
-var _store = {
-  list: [],
-  editing: false
-}
+import PostActions from '../actions/Actions'
 
-const PostStore = ObjectAssign({}, EventEmitter.prototype, {
-  addChangeListener(cb) {
-    this.on(CHANGE_EVENT, cb)
+const PostStore = Reflux.createStore({
+  listenables: [PostActions],
+  baseUrl: "/api/posts",
+  postList: [],
+
+  init() {
+    this.fetchPosts()
   },
 
-  removeChangeListener(cb) {
-    this.removeListener(CHANGE_EVENT, cb)
+  fetchPosts() {
+    var self = this
+    request({ url: this.baseUrl, method: "get",
+      error(err) { return console.error(err) },
+      success(resp) {
+        this.postList = resp.data
+        self.trigger(this.postList)
+      }
+    })
   },
 
-  getList() {
-    return _store
+  newPost() {
+    var self = this
+    request({
+      url: this.baseUrl,
+      method: "post",
+      data: { post: { title: "New Post", body: "## Some Markdown", slug: "new-test-post", user_id: 0 } },
+      error(err) { return console.error(err) },
+      success(resp) {
+        self.trigger(this.postList)
+      }
+    })
   }
-});
 
-AppDispatcher.register(function(payload) {
-  switch(payload.action) {
-    case ActionTypes.GET_POST_RESPONSE:
-      let posts = payload.response
-      _store.list = posts
-      PostStore.emit(CHANGE_EVENT)
-      break;
-
-    default:
-      return true;
-  }
 })
 
 export default PostStore
