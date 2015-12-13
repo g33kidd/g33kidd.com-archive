@@ -4,27 +4,36 @@ const getRequest = (path, done, err) => {
   return request({
     url: path,
     method: 'get',
-    success(resp) {
-      done(resp)
-    },
-    error(error) {
-      err(error)
-    }
+    success(resp) { done(resp) },
+    error(error) { err(error) }
   })
 }
-const postRequest = () => {}
+
+const postRequest = (data, done, err) => {
+  return request({
+    url: "/api/posts",
+    method: 'post',
+    data: {post: data},
+    success(resp) { done(resp) },
+    error(error) { err(error) }
+  })
+}
 
 const API = {
   baseURI: "/api",
   postPath: "/api/posts",
 
   get(id, done, err) {
-    let path = `${this.postPath}`
+    let path = this.postPath
     if(id) {
       path = `${this.postPath}/${id}`
     }
-
     getRequest(path, done, err)
+  },
+
+  post(post, done, err) {
+    let path = this.postPath
+    postRequest(post, done, err)
   }
 }
 

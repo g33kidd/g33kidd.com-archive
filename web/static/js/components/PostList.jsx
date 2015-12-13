@@ -29,6 +29,7 @@ const PostList = React.createClass({
   },
 
   render() {
+    console.log(this)
 
     if(this.state.loading)
       return <p>Loading Posts...</p>

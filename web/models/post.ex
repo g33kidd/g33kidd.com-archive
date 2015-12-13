@@ -14,8 +14,8 @@ defmodule Blog.Post do
     timestamps
   end
 
-  @required_fields ~w(title body user_id slug)
-  @optional_fields ~w()
+  @required_fields ~w(title body user_id)
+  @optional_fields ~w(slug)
 
   @doc """
   Creates a changeset based on the `model` and `params`.

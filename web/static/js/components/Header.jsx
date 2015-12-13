@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import PostStore from '../stores/PostStore'
-// import history from '../History'
+import PostActions from '../actions/Actions'
 
 export default class Header extends React.Component {
-  _newPost() {
-    PostStore.newPost()
+  handleNewPost() {
+    let post = {
+      title: "New Post",
+      body: "## Write Some Markdown Here...",
+      user_id: 0
+    }
+
+    PostActions.create(post)
   }
 
   render() {
@@ -16,7 +21,7 @@ export default class Header extends React.Component {
           <ul className="nav">
             <li><Link to="">Dashboard</Link></li>
             <li><Link to="posts">Posts</Link></li>
-            <li><a onClick={this._newPost}>New Post</a></li>
+            <li><a onClick={this.handleNewPost}>New Post</a></li>
             <li><Link to="settings">Settings</Link></li>
           </ul>
         </div>

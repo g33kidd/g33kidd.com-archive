@@ -1,9 +1,11 @@
 TODO:
 
-- fix the actions and stores
-  https://gist.github.com/gpbl/ec05807f84b2fc8a970d
-  - allow the PostEditPage to get(id) from the store
-  - create update func for the PostStore
+<!-- - fix the actions and stores -->
+  <!-- https://gist.github.com/gpbl/ec05807f84b2fc8a970d -->
+  <!-- - allow the PostEditPage to get(id) from the store -->
+- create update func for the PostStore
+
+- add 'draft:bool' to post
 
 - authentication? maybe.. :P
   look at this: http://adamalbrecht.com/2015/07/20/authentication-using-json-web-tokens-using-rails-and-react/

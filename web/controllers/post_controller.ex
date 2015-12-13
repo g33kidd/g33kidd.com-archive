@@ -21,7 +21,6 @@ defmodule Blog.PostController do
     post = %{
       title: post["title"],
       body: post["body"],
-      slug: post["slug"],
       user_id: post["user_id"]
     }
 
