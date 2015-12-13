@@ -1,6 +1,6 @@
 import Reflux from 'reflux'
 import request from 'reqwest'
-import { indexBy, assign } from 'lodash'
+import _ from 'lodash'
 
 import PostActions from '../actions/Actions'
 
@@ -12,13 +12,22 @@ const PostStore = Reflux.createStore({
     return this.posts[id]
   },
 
+  onDeleteCompleted(id) {
+    delete this.posts[id]
+    this.trigger(this.posts)
+  },
+
+  onDeleteFailed(err) {
+    console.error(err)
+  },
+
   onCreateCompleted(posts) {
     if(posts instanceof Array) {
-      posts = indexBy(posts, 'id')
+      posts = _.indexBy(posts, 'id')
       this.loaded = true
     }
-    
-    assign(this.posts, posts)
+
+    _.assign(this.posts, posts)
     this.trigger(this.posts)
   },
 
@@ -28,11 +37,11 @@ const PostStore = Reflux.createStore({
 
   onLoadCompleted(posts) {
     if(posts instanceof Array) {
-      posts = indexBy(posts, 'id')
+      posts = _.indexBy(posts, 'id')
       this.loaded = true
     }
 
-    assign(this.posts, posts)
+    _.assign(this.posts, posts)
     this.trigger(this.posts)
   },
 

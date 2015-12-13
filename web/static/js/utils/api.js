@@ -19,6 +19,16 @@ const postRequest = (data, done, err) => {
   })
 }
 
+const delRequest = (id, done, err) => {
+  return request({
+    url: "/api/posts",
+    method: 'delete',
+    data: { id: id },
+    success(resp) { done(resp) },
+    error(error) { err(error) }
+  })
+}
+
 const API = {
   baseURI: "/api",
   postPath: "/api/posts",
@@ -34,6 +44,10 @@ const API = {
   post(post, done, err) {
     let path = this.postPath
     postRequest(post, done, err)
+  },
+
+  delete(id, done, err) {
+    delRequest(id, done, err)
   }
 }
 

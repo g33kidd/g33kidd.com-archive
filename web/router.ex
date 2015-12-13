@@ -29,12 +29,10 @@ defmodule Blog.Router do
   scope "/api", Blog do
     pipe_through :api
 
-    # post "/posts", PostController, :create
-    # get "/posts", PostController, :index
-    # get "/posts/:id", PostController, :show
-    # put "/posts/:id", PostController, :update
-    # delete "/posts/:id", PostController, :destroy
-
-    resources "/posts", PostController, as: :api_posts
+    post "/posts", PostController, :create
+    get "/posts", PostController, :index
+    get "/posts/:id", PostController, :show
+    put "/posts/:id", PostController, :update
+    delete "/posts", PostController, :destroy
   end
 end

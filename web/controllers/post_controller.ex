@@ -33,6 +33,14 @@ defmodule Blog.PostController do
     end
   end
 
+  def destroy(conn, %{"id" => id}) do
+    IO.puts id
+    post = Blog.Post.get_by_id(id)
+    IO.inspect post
+    Blog.Repo.delete!(post)
+    json conn, %{ id: id }
+  end
+
   # admin page...
   # def edit(conn, %{"id" => id}) do
   #   post = Post.changeset Post.get([id: id])

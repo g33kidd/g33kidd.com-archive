@@ -5,7 +5,8 @@ import history from '../History'
 
 const PostActions = Reflux.createActions({
   'load': { children: ['completed', 'failed'] },
-  'create': { children: ['completed', 'failed'] }
+  'create': { children: ['completed', 'failed'] },
+  'delete': { children: ['completed', 'failed'] }
 })
 
 PostActions.load.listen((id) => {
@@ -31,6 +32,13 @@ PostActions.create.listen((post) => {
     console.error(err)
     PostActions.create.failed(err)
   })
+})
+
+PostActions.delete.listen((id) => {
+  Api.delete(id,
+    (resp) => {
+      PostActions.delete.completed(id)},
+    (err) => PostActions.delete.failed(err))
 })
 
 export default PostActions
