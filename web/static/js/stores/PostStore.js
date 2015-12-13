@@ -1,39 +1,35 @@
 import Reflux from 'reflux'
 import request from 'reqwest'
+import { indexBy, assign } from 'lodash'
 
 import PostActions from '../actions/Actions'
 
 const PostStore = Reflux.createStore({
 
-  baseUrl: "/api/posts",
-  postList: [],
+  listenables: PostActions,
+
+  posts: {},
+
+  get(id) {
+    return this.posts[id]
+  },
+
+  onLoadCompleted(posts) {
+    if(posts instanceof Array) {
+      posts = indexBy(posts, 'id')
+      this.loaded = true
+    }
+
+    assign(this.posts, posts)
+    this.trigger(this.posts)
+  },
+
+  onLoadFail(err) {
+    console.error(err)
+  },
 
   getInitialState() {
-    this.fetchPosts()
-  },
-
-  fetchPosts() {
-    var self = this
-    request({ url: this.baseUrl, method: "get",
-      error(err) { return console.error(err) },
-      success(resp) {
-        this.postList = resp.data
-        self.trigger(this.postList)
-      }
-    })
-  },
-
-  newPost() {
-    var self = this
-    request({
-      url: this.baseUrl,
-      method: "post",
-      data: { post: { title: "New Post", body: "## Some Markdown", slug: "new-test-post", user_id: 0 } },
-      error(err) { return console.error(err) },
-      success(resp) {
-        self.trigger(this.postList)
-      }
-    })
+    return this.posts
   }
 
 })

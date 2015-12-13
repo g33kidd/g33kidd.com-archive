@@ -4,8 +4,7 @@ import { Router, Route } from 'react-router'
 import App from './App'
 
 // Add the pages here..
-import NewPostPage from './components/NewPostPage'
-import EditPostPage from './components/EditPostPage'
+import PostEditPage from './components/PostEditPage'
 import PostPage from './components/PostPage'
 import SettingsPage from './components/SettingsPage'
 
@@ -16,7 +15,7 @@ export default class Root extends Component {
       <Router history={history}>
         <Route name='admin' path='/' component={App}>
           <Route name='posts' path='/posts' component={PostPage} />
-          <Route name="editPost" path='/posts/:id' component={EditPostPage} />
+          <Route name="editPost" path='/posts/:id' component={PostEditPage} />
           <Route name='settings' path='/settings' component={SettingsPage} />
         </Route>
       </Router>

@@ -5,10 +5,6 @@ import PostActions from './actions/Actions'
 
 export default class App extends React.Component {
   render() {
-    setInterval(() => {
-      PostActions.getPosts()
-    }, 5000)
-
     return (
       <div className="app">
         <Header />
