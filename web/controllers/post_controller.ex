@@ -4,7 +4,6 @@ defmodule Blog.PostController do
   plug :scrub_params, "post" when action in [:update, :create]
 
   alias Blog.Post
-  alias Blog.Repo
 
   # admin page...
   def index(conn, _) do
@@ -23,7 +22,7 @@ defmodule Blog.PostController do
       title: post["title"],
       body: post["body"],
       slug: post["slug"],
-      user_id: 0
+      user_id: post["user_id"]
     }
 
     case Blog.Post.create(post) do

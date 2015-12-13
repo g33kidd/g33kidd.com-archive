@@ -4,11 +4,11 @@ import request from 'reqwest'
 import PostActions from '../actions/Actions'
 
 const PostStore = Reflux.createStore({
-  listenables: [PostActions],
+
   baseUrl: "/api/posts",
   postList: [],
 
-  init() {
+  getInitialState() {
     this.fetchPosts()
   },
 
