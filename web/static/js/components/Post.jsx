@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-import PostActions from '../actions/Actions'
+import PostActions from '../actions/PostActions'
 import history from '../History'
 
 export default class Post extends Component {
   handleDelete() {
     let postId = this.props.id
-    PostActions.delete(postId)
+    PostActions.destroy(postId)
   }
 
   handleClickPost() {

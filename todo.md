@@ -1,10 +1,5 @@
 TODO:
 
-<!-- - fix the actions and stores -->
-  <!-- https://gist.github.com/gpbl/ec05807f84b2fc8a970d -->
-  <!-- - allow the PostEditPage to get(id) from the store -->
-- create update func for the PostStore
-
 - add 'draft:bool' to post
 
 - authentication? maybe.. :P
@@ -12,6 +7,3 @@ TODO:
   - create an auth plug for checking tokens or whatever
 
 - modal Component to load/unload modals with different forms attached
-- error status messages
-  - make something like Bert
-  https://github.com/themeteorchef/bert/

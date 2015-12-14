@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Reflux, { ListenerMixin } from 'reflux'
 
-import PostActions from '../actions/Actions'
+import PostActions from '../actions/PostActions'
 import PostStore from '../stores/PostStore'
 
 const Editor = React.createClass({

@@ -6,7 +6,7 @@ defmodule Blog.PostSerializer do
     :body,
     :slug,
     :data,
-    :created_at,
+    :inserted_at,
     :updated_at
   ]
 end

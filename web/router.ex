@@ -33,6 +33,6 @@ defmodule Blog.Router do
     get "/posts", PostController, :index
     get "/posts/:id", PostController, :show
     put "/posts/:id", PostController, :update
-    delete "/posts", PostController, :destroy
+    delete "/posts/:id", PostController, :destroy
   end
 end

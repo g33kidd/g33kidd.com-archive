@@ -1,9 +1,9 @@
+import _ from 'lodash'
 import React, { Component } from 'react'
 import Reflux, { ListenerMixin } from 'reflux'
 import Post from './Post'
-import { map } from 'lodash'
 
-import PostActions from '../actions/Actions'
+import PostActions from '../actions/PostActions'
 import PostStore from '../stores/PostStore'
 
 const PostList = React.createClass({
@@ -16,16 +16,16 @@ const PostList = React.createClass({
     }
   },
 
-  componentDidMount() {
-    this.listenTo(PostStore, this.handleLoadPostsComplete)
-    if(!PostStore.loaded) PostActions.load()
-  },
-
-  handleLoadPostsComplete(posts) {
+  onPostsChange(posts) {
     this.setState({
       loading: false,
       posts: posts
     })
+  },
+
+  componentDidMount() {
+    this.listenTo(PostStore, this.onPostsChange)
+    if(!PostStore.loaded) PostActions.load()
   },
 
   render() {
@@ -34,7 +34,7 @@ const PostList = React.createClass({
     if(this.state.loading)
       return <p>Loading Posts...</p>
 
-    let posts = map(this.state.posts, (post) => {
+    let posts = _.map(this.state.posts, (post) => {
       return <Post key={post.id} id={post.id} attributes={post.attributes} />
     })
 

@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-import PostActions from '../actions/Actions'
+import PostActions from '../actions/PostActions'
 
 export default class Header extends React.Component {
   handleNewPost() {
     let post = {
-      title: "New Post",
-      body: "## Write Some Markdown Here...",
-      user_id: 0
+      post: {
+        title: "New Post",
+        body: "## Write Some Markdown Here...",
+        user_id: 0
+      }
     }
 
     PostActions.create(post)
