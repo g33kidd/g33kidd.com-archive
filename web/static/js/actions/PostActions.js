@@ -2,6 +2,8 @@ import Reflux from 'reflux'
 import PostApi from '../utils/PostApi'
 import History from '../History'
 
+// TODO: make it easier to add endpoints...
+
 // Let's create the Reflux Actions
 // see: https://github.com/reflux/refluxjs#creating-actions
 const PostActions = Reflux.createActions({
@@ -36,12 +38,26 @@ PostActions.create.listen((post) => {
 
       if(resp.data.id) {
         payload[resp.data.id] = resp.data
-        PostActions.load.completed(payload)
+        PostActions.create.completed(payload)
       }else{
-        PostActions.load.failed("Post failed to create.")
+        PostActions.create.failed("Post failed to create.")
       }
     }).catch((err) => {
       PostActions.load.failed(err)
+    })
+})
+
+PostActions.save.listen((id, post) => {
+  PostApi.update(id, post)
+    .then((resp) => {
+      let payload = {}
+
+      if(resp.data.id) {
+        payload[resp.data.id] = resp.data
+        PostActions.save.completed(payload)
+      }else{
+        PostActions.save.failed(resp)
+      }
     })
 })
 

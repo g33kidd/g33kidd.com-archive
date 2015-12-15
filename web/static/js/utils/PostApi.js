@@ -40,8 +40,9 @@ const PostApi = {
     return makeRequest(postUrl, 'post', post)
   },
 
-  update(post) {
-    return makeRequest(postUrl, 'put', post)
+  update(id, post) {
+    let path = `${postUrl}/${id}`
+    return makeRequest(path, 'put', post)
   },
 
   // DELETE /api/posts/:id

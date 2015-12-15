@@ -67,6 +67,18 @@ const PostEditPage = React.createClass({
     console.log(e.target.value)
   },
 
+  handleUpdatePost() {
+    let post = {
+      post: {
+        title: this.refs.title.value,
+        slug: this.refs.slug.value,
+        body: this.editor.value()
+      }
+    }
+
+    PostActions.save(this.props.params.id, post)
+  },
+
   render() {
     if (this.state.loading)
       return <p>Loading Post...</p>
@@ -78,14 +90,16 @@ const PostEditPage = React.createClass({
     return (
       <div className="post-form">
         <div>
-          <input type="text" className="input title" />
+          <input type="text" className="input title" value={post.title}
+            ref="title" onChange={this.titleChanged} />
         </div>
         <div>
-          <input type="text" className="input slug" />
+          <input type="text" className="input slug" ref="slug" value={post.slug} />
         </div>
         <div>
-          <textarea defaultValue={post.attributes.body}></textarea>
+          <textarea defaultValue={post.attributes.body} ref="body"></textarea>
         </div>
+        <button onClick={this.handleUpdatePost} className="update-post">Save</button>
       </div>
     )
   }

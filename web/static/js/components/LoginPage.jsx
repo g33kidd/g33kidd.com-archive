@@ -6,18 +6,15 @@ import SessionStore from '../stores/SessionStore'
 import History from '../History'
 
 const LoginForm = React.createClass({
-  componentDidMount() {
-    let jwToken = localStorage.getItem('token')
-    if(jwToken) {
-      AuthActions.autoLogin(jwToken)
-      History.replaceState(null, "/posts")
-    }
+  getInitialState() {
+    return { checkingStorage: true }
   },
 
   handleLogin(e) {
     e.preventDefault();
     let username = this.refs.username.value
     let password = this.refs.password.value
+
     AuthActions.login(username, password)
   },
 
@@ -29,21 +26,42 @@ const LoginForm = React.createClass({
     )
   },
 
+  updateCheckingStorage(storage) {
+    this.setState({
+      checkingStorage: storage
+    })
+  },
+
+  componentWillMount() {
+    let jwToken = localStorage.getItem('token')
+    if(jwToken) {
+      this.updateCheckingStorage(true)
+      AuthActions.autoLogin(jwToken)
+      History.replaceState(null, "/posts")
+    }else{
+      this.updateCheckingStorage(false)
+    }
+  },
+
   render() {
     let buttonText = SessionStore.isAuthRequestInProgress() ? 'Loggin in...' : 'Login'
-    return (
-      <div className="login-page">
-        <div className="login-container">
-          <h2 className="header">Login</h2>
-          <form onSubmit={this.handleLogin} autoComplete="off">
-            { this.renderAuthErrors() }
-            <input type="text" name="username" ref="username" />
-            <input type="password" name="password" ref="password" />
-            <button disabled={SessionStore.isAuthRequestInProgress()}>{buttonText}</button>
-          </form>
+    if(this.state.checkingStorage) {
+      return <p>Checking Storage</p>
+    }else{
+      return (
+        <div className="login-page">
+          <div className="login-container">
+            <h2 className="header">Login</h2>
+            <form onSubmit={this.handleLogin} autoComplete="off">
+              { this.renderAuthErrors() }
+              <input type="text" name="username" ref="username" />
+              <input type="password" name="password" ref="password" />
+              <button disabled={SessionStore.isAuthRequestInProgress()}>{buttonText}</button>
+            </form>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 })
 

@@ -34,6 +34,17 @@ defmodule Blog.PostController do
     end
   end
 
+  def update(conn, %{"id" => id, "post" => post_params}) do
+    post = Post.get_by_id(id)
+    changeset = Post.changeset(post, post_params)
+    case Blog.Repo.update(changeset) do
+      {:ok, post} ->
+        json conn, Blog.PostSerializer.format(post)
+      {:error, changeset} ->
+        json conn, changeset.errors
+    end
+  end
+
   def destroy(conn, %{"id" => id}) do
     IO.puts id
     post = Blog.Post.get_by_id(id)

@@ -30,7 +30,7 @@ defmodule Blog.Router do
     pipe_through :api
 
     post "/auth", AuthController, :login
-    
+
     post "/posts", PostController, :create
     get "/posts", PostController, :index
     get "/posts/:id", PostController, :show

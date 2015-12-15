@@ -1,17 +1,19 @@
 import _ from 'lodash'
 import Reflux from 'reflux'
 import PostActions from '../actions/PostActions'
+import History from '../History'
 
 const PostStore = Reflux.createStore({
   listenables: PostActions,
   posts: {},
 
-  getInitialState() { return this.posts },
+  getInitialState() {
+    return this.posts
+  },
 
   get(id) { return this.posts[id] },
 
   onLoadCompleted(posts) {
-    console.log(posts)
     if(posts instanceof Array) {
       posts = _.indexBy(posts, 'id')
       this.loaded = true
@@ -25,7 +27,26 @@ const PostStore = Reflux.createStore({
     console.error(err)
   },
 
-  onCreateCompleted() {},
+  onSaveCompleted(posts) {
+    PostActions.load.completed(posts)
+    this.trigger(this.posts)
+  },
+
+  onSaveFailed(err) {
+    console.error(err)
+  },
+
+  onCreateCompleted(post) {
+    this.loaded = false
+    PostActions.load.completed(post)
+    let newPost = post[Object.keys(post)[0]]
+    let postPath = `/posts/${newPost.id}`
+    setTimeout(() => {
+      this.loaded = true
+      History.replaceState(null, postPath)
+    }, 1000)
+    this.trigger(this.posts)
+  },
 
   onCreateFailed(err) {
     console.error(err)
