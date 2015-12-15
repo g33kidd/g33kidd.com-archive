@@ -16,13 +16,13 @@ const SessionStore = Reflux.createStore({
     userData: {}
   },
 
-  onAutoLogin(token) {
+  onAutoLogin(token, next) {
     var decoded_token = jwtDecode(token)
     this.sessionState.authErrors = []
     this.sessionState.authToken = token
     this.sessionState.authRequestInProgress = false
     this.sessionState.userData = decoded_token
-    History.replaceState(null, "/")
+    History.replaceState(null, next)
     this.trigger(this.sessionState)
   },
 

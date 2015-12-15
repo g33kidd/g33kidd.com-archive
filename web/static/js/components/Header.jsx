@@ -12,7 +12,7 @@ export default class Header extends React.Component {
       post: {
         title: "New Post",
         body: "## Write Some Markdown Here...",
-        user_id: 0
+        user_id: SessionStore.getUserId()
       }
     }
 

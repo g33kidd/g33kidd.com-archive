@@ -16,7 +16,13 @@ import History from './History'
 
 const requireAuth = (nextState, replaceState) => {
   if(!SessionStore.isLoggedIn()) {
-    replaceState({ nextPathname: nextState.location.pathname }, '/login')
+    let token = localStorage.getItem('token')
+    if(token) {
+      console.log(nextState)
+      AuthActions.autoLogin(token, nextState.location.pathname)
+    }else{
+      replaceState({ nextPathname: nextState.location.pathname }, '/login')
+    }
   }
 }
 

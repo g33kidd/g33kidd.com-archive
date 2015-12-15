@@ -13,8 +13,7 @@ defmodule Blog.PostController do
   end
 
   def show(conn, %{"id" => id}) do
-    post = Post.get_by_id(id)
-    post = Blog.PostSerializer.format(post)
+    post = Post.get_by_id(id) |> Blog.PostSerializer.format()
     json conn, post
   end
 
@@ -35,63 +34,15 @@ defmodule Blog.PostController do
   end
 
   def update(conn, %{"id" => id, "post" => post_params}) do
-    post = Post.get_by_id(id)
-    changeset = Post.changeset(post, post_params)
+    changeset = Post.get_by_id(id) |> Post.changeset(post_params)
     case Blog.Repo.update(changeset) do
-      {:ok, post} ->
-        json conn, Blog.PostSerializer.format(post)
-      {:error, changeset} ->
-        json conn, changeset.errors
+      {:ok, post} -> json(conn, Blog.PostSerializer.format(post))
+      {:error, changeset} -> json(conn, changeset.errors)
     end
   end
 
   def destroy(conn, %{"id" => id}) do
-    IO.puts id
-    post = Blog.Post.get_by_id(id)
-    IO.inspect post
-    Blog.Repo.delete!(post)
+    post = Blog.Post.get_by_id(id) |> Blog.Repo.delete!
     json conn, %{ id: id }
   end
-
-  # admin page...
-  # def edit(conn, %{"id" => id}) do
-  #   post = Post.changeset Post.get([id: id])
-  #   conn
-  #   |> put_layout("admin.html")
-  #   |> render("edit.html", [post: post])
-  # end
-  #
-  # # admin page...
-  # def new(conn, _params) do
-  #   user = get_session(conn, :current_user)
-  #   post = Post.changeset %Post{}, %{}
-  #
-  #   conn
-  #   |> put_layout("admin.html")
-  #   |> render("new.html", [post: post])
-  # end
-  #
-  # def update(conn, %{"post" => post_params}) do
-  #   IO.inspect post_params
-  #   conn |> halt
-  # end
-  #
-  # def create(conn, %{"post" => post_params}) do
-  #   changeset = Post.changeset %Post{}, post_params
-  #   case Repo.insert changeset do
-  #     {:ok, post} ->
-  #       conn
-  #       |> put_flash(:info, "Created post!")
-  #       |> redirect(to: "/")
-  #     {:error, changeset} ->
-  #       conn
-  #       |> assign(:changeset, changeset)
-  #       |> redirect(to: "/")
-  #   end
-  # end
-  #
-  # def delete(conn, %{"id" => id}) do
-  #   post = Post.get(id)
-  #   conn |> halt
-  # end
 end

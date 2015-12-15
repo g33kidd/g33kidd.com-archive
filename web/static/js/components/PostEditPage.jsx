@@ -4,51 +4,32 @@ import Reflux, { ListenerMixin } from 'reflux'
 import PostActions from '../actions/PostActions'
 import PostStore from '../stores/PostStore'
 
-const Editor = React.createClass({
-  componentDidMount() {
-
-  },
-
-  render() {
-    return <textarea></textarea>
-  }
-})
-
 const PostEditPage = React.createClass({
   mixins: [ListenerMixin],
+  editor: null,
 
   getInitialState() {
     const postId = this.props.params.id
     const post = PostStore.getInitialState().posts
     return {
       loading: !PostStore.get(this.props.params.id),
-      posts: post
+      posts: post,
+      editor: new SimpleMDE()
     }
   },
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-    if(!PostStore.get(nextProps.id))
+  componentWillMount() {
+    this.listenTo(PostStore, this.handleLoadPostComplete)
+    if(!PostStore.get(this.props.params.id)) {
       this.fetchData()
+    }
   },
 
   componentDidMount() {
     this.listenTo(PostStore, this.handleLoadPostComplete)
     if(!PostStore.get(this.props.params.id))
       this.fetchData()
-    let uniqueId = `editor-${this.props.params.id}`
-    this.editor = new SimpleMDE({
-      autofocus: true,
-      autosave: {
-        enabled: true,
-        uniqueId: uniqueId
-      }
-    })
   },
-
-  getTitle() {},
-
-  getBody() {},
 
   fetchData() {
     this.setState({ loading: true }, () => {
@@ -64,6 +45,10 @@ const PostEditPage = React.createClass({
   },
 
   titleChanged(e) {
+    console.log(e.target.value)
+  },
+
+  updateBody(e) {
     console.log(e.target.value)
   },
 
@@ -84,8 +69,9 @@ const PostEditPage = React.createClass({
       return <p>Loading Post...</p>
 
     const post = PostStore.get(this.props.params.id)
-    if(!post)
+    if(!post) {
       return <p>Post Not Found</p>
+    }
 
     return (
       <div className="post-form">
@@ -97,7 +83,7 @@ const PostEditPage = React.createClass({
           <input type="text" className="input slug" ref="slug" value={post.slug} />
         </div>
         <div>
-          <textarea defaultValue={post.attributes.body} ref="body"></textarea>
+          <textarea value={post.attributes.body} onChange={this.updateBody}></textarea>
         </div>
         <button onClick={this.handleUpdatePost} className="update-post">Save</button>
       </div>

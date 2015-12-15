@@ -22,6 +22,8 @@ defmodule Blog.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", SiteController, :index
+    get "/not-found", SiteController, :not_found
+    get "/p/:post_id", SiteController, :display
     get "/:slug", SiteController, :display
   end
 
