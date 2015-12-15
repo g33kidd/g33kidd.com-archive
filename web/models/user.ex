@@ -1,7 +1,9 @@
 defmodule Blog.User do
   use Blog.Web, :model
+  import Comeonin.Bcrypt, only: [hashpwsalt: 1]
 
   alias Blog.User
+  alias Blog.Repo
 
   schema "users" do
     field :username, :string
@@ -28,8 +30,18 @@ defmodule Blog.User do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> unique_constraint([:username, :email], on: Blog.User, downcase: true)
+    # |> unique_constraint([:username], on: User, downcase: true)
+    # |> unique_constraint([:email], on: User, downcase: true)
     |> validate_confirmation(:password, message: "passwords do not match")
+    |> hash_password()
+  end
+
+  def hash_password(changeset) do
+    if password = get_change(changeset, :password) do
+      put_change(changeset, :password_hash, hashpwsalt(password))
+    else
+      changeset
+    end
   end
 
   def get_by(id) do
@@ -38,16 +50,10 @@ defmodule Blog.User do
     Repo.one! query
   end
 
-  # Token Validation
-  #
-  # def validate(%{"id" => id}, token) do
-  #   user = get_by(id)
-  #
-  #   if user.token === token do
-  #     {:ok, user}
-  #   end
-  # end
-  #
-  # def validate(_, token), do: {:error, "Not a valid token!"}
+  def find_by_username(username) do
+    query = from u in User,
+          where: u.username == ^username
+    Repo.one! query
+  end
 
 end

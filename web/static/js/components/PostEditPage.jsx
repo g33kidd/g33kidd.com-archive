@@ -6,8 +6,7 @@ import PostStore from '../stores/PostStore'
 
 const Editor = React.createClass({
   componentDidMount() {
-    this.editor = new SimpleMDE({autofocus: true})
-    this.editor.value(this.props.text)
+
   },
 
   render() {
@@ -37,6 +36,14 @@ const PostEditPage = React.createClass({
     this.listenTo(PostStore, this.handleLoadPostComplete)
     if(!PostStore.get(this.props.params.id))
       this.fetchData()
+    let uniqueId = `editor-${this.props.params.id}`
+    this.editor = new SimpleMDE({
+      autofocus: true,
+      autosave: {
+        enabled: true,
+        uniqueId: uniqueId
+      }
+    })
   },
 
   getTitle() {},
@@ -77,7 +84,7 @@ const PostEditPage = React.createClass({
           <input type="text" className="input slug" />
         </div>
         <div>
-          <Editor text={post.attributes.body} />
+          <textarea defaultValue={post.attributes.body}></textarea>
         </div>
       </div>
     )

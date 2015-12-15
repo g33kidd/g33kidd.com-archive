@@ -1,12 +1,25 @@
 import request from 'reqwest'
+import SessionStore from '../stores/SessionStore'
 
-const baseUrl = "/api"
 const postUrl = "/api/posts"
 const makeRequest = (path, method, data) => {
+  let headers = {
+    "Authorization": `${SessionStore.getAuthToken()}`
+  }
   if(method === 'post') {
-    return request({ url: path, method: 'post', data: data })
+    return request({
+      url: path,
+      method: 'post',
+      data: data,
+      headers: headers
+    })
   }else{
-    return request({ url: path, method: method, data: data })
+    return request({
+      url: path,
+      method: method,
+      data: data,
+      headers: headers
+    })
   }
 }
 
@@ -24,7 +37,11 @@ const PostApi = {
   // POST /api/posts
   // creates a post
   create(post) {
-    return makeRequest(postUrl, 'post', post);
+    return makeRequest(postUrl, 'post', post)
+  },
+
+  update(post) {
+    return makeRequest(postUrl, 'put', post)
   },
 
   // DELETE /api/posts/:id

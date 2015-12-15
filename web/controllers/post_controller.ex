@@ -2,6 +2,7 @@ defmodule Blog.PostController do
   use Blog.Web, :controller
 
   plug :scrub_params, "post" when action in [:update, :create]
+  plug Blog.Plugs.Authenticate
 
   alias Blog.Post
 
