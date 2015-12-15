@@ -3,6 +3,8 @@ import AuthActions from '../actions/AuthActions'
 import AuthApi from '../utils/AuthApi'
 
 import History from '../History'
+import jwtDecode from 'jwt-decode'
+import localstorage from 'localStorage'
 
 const SessionStore = Reflux.createStore({
   listenables: [AuthActions],
@@ -14,6 +16,16 @@ const SessionStore = Reflux.createStore({
     userData: {}
   },
 
+  onAutoLogin(token) {
+    var decoded_token = jwtDecode(token)
+    this.sessionState.authErrors = []
+    this.sessionState.authToken = token
+    this.sessionState.authRequestInProgress = false
+    this.sessionState.userData = decoded_token
+    History.replaceState(null, "/")
+    this.trigger(this.sessionState)
+  },
+
   onLogin(username, password) {
     this.sessionState.authRequestInProgress = true
     AuthApi.login(username, password)
@@ -23,6 +35,7 @@ const SessionStore = Reflux.createStore({
   },
 
   onLoginCompleted(resp) {
+    localStorage.setItem('token', resp.auth_token)
     this.sessionState.authRequestInProgress = false
     this.sessionState.authErrors = []
     this.sessionState.authToken = resp.auth_token
@@ -42,6 +55,7 @@ const SessionStore = Reflux.createStore({
       authToken: null,
       userData: {}
     }
+    localStorage.removeItem('token')
     History.replaceState(null, "/login")
     this.trigger(this.sessionState)
   },

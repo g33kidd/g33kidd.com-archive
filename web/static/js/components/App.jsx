@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 
-import Header from './components/Header'
+import Header from './Header'
+import AuthActions from '../actions/AuthActions'
 
 export default class App extends React.Component {
   render() {
