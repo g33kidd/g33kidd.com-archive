@@ -5,15 +5,15 @@ defmodule Blog.Setting do
   alias Blog.Repo
 
   schema "settings" do
-    field :key, :string
-    field :val, :string
+    field :name, :string
+    field :text, :string
     field :map, :map
 
     timestamps
   end
 
-  @required_fields ~w(key val)
-  @optional_fields ~w(map)
+  @required_fields ~w(name)
+  @optional_fields ~w(map text)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -34,13 +34,13 @@ defmodule Blog.Setting do
 
   def create(key, val) when is_bitstring(val) do
     setting = Setting.changeset %Setting{},
-      %{ name: key, val: val }
+      %{ name: key, text: val }
     Repo.insert! setting
   end
 
   # gets a setting by it's key. Returns a `val` or a `map`.
   def get(key) do
     Repo.get_by! Setting, name: key
-    |> Dict.get_lazy(:val, fn -> :map end)
+    |> Dict.get_lazy(:text, fn -> :map end)
   end
 end

@@ -8,6 +8,7 @@ defmodule Blog.Repo.Migrations.CreatePost do
       add :user_id, :integer
       add :slug, :string
       add :data, :map
+      add :status, :string, default: "draft"
 
       timestamps
     end

@@ -9,6 +9,7 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+Blog.Setting.create "styles", "#navbar {width: 80%;height: 23px;ul { list-style-type: none; } li {float: left; a { font-weight: bold; } } }"
 
 changeset = Blog.User.changeset %Blog.User{}, %{
   username: "g33kidd",

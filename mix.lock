@@ -26,6 +26,7 @@
   "poolboy": {:hex, :poolboy, "1.5.1"},
   "postgrex": {:hex, :postgrex, "0.9.1"},
   "ranch": {:hex, :ranch, "1.2.0"},
+  "sass": {:git, "https://github.com/danielfarrell/sass.ex.git", "479048c5d95a5a14b78420421fbbd0ea6c5277f7", []},
   "secure_random": {:hex, :secure_random, "0.1.1"},
   "timex": {:hex, :timex, "0.16.2"},
   "tzdata": {:hex, :tzdata, "0.1.8"},

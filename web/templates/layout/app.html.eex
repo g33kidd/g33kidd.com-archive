@@ -7,8 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title></title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <title>Site Title</title>
   </head>
 
   <body>
