@@ -1,8 +1,6 @@
 defmodule Blog.SiteController do
   use Blog.Web, :controller
 
-  plug Blog.Plugs.SiteAssigns
-
   def index(conn, params) do
     render conn, "index.html",
       posts: Blog.Post.all

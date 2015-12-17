@@ -17,7 +17,7 @@ defmodule Blog.ModelCase do
   using do
     quote do
       alias Blog.Repo
-      import Ecto.Model
+      import Ecto.Schema
       import Ecto.Query, only: [from: 2]
       import Blog.ModelCase
     end

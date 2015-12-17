@@ -21,7 +21,7 @@ defmodule Blog.ConnCase do
       use Phoenix.ConnTest
 
       alias Blog.Repo
-      import Ecto.Model
+      import Ecto.Schema
       import Ecto.Query, only: [from: 2]
 
       import Blog.Router.Helpers
