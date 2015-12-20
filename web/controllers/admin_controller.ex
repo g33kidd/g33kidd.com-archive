@@ -6,4 +6,7 @@ defmodule Blog.AdminController do
     |> put_layout("admin.html")
     |> render("index.html")
   end
+
+  def setup(conn, _) do
+  end
 end

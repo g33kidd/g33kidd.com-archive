@@ -7,6 +7,7 @@ defmodule Blog.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Blog.Plugs.Setup
   end
 
   pipeline :api do
@@ -15,6 +16,7 @@ defmodule Blog.Router do
 
   scope "/admin", Blog do
     pipe_through :browser
+    get "/setup", AdminController, :setup
     get "/*anything", AdminController, :index
   end
 

@@ -12,8 +12,9 @@
   </head>
 
   <body>
+    <%= "View Template: #{@view_template}" %>
     <%= render @view_module, @view_template, assigns %>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
     <%= get_tracking_code(assigns) %>
   </body>
 </html>

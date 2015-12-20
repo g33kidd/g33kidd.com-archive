@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 
-export default class SettingsPage extends Component {
+const SettingsPage = React.createClass({
   render() {
     return (
       <h1>Settings</h1>
     )
   }
-}
+})
+
+export default SettingsPage

@@ -27,7 +27,4 @@ defmodule Blog.AuthController do
     end
   end
 
-  def get_verified_token(token) do
-  end
-
 end

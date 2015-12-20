@@ -6,7 +6,6 @@ defmodule Blog.LayoutView do
   end
 
   def get_stylesheets do
-    style = Blog.Repo.get_by! Blog.Setting, name: "styles"
-    "<style>#{style.text}</style>"
+    "<style></style>"
   end
 end
