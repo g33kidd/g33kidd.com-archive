@@ -62,51 +62,6 @@ const PostStore = Reflux.createStore({
     console.error(err)
   }
 
-  // get(id) {
-  //   return this.posts[id]
-  // },
-  //
-  // onDeleteCompleted(id) {
-  //   delete this.posts[id]
-  //   this.trigger(this.posts)
-  // },
-  //
-  // onDeleteFailed(err) {
-  //   console.error(err)
-  // },
-  //
-  // onCreateCompleted(posts) {
-  //   if(posts instanceof Array) {
-  //     posts = _.indexBy(posts, 'id')
-  //     this.loaded = true
-  //   }
-  //
-  //   _.assign(this.posts, posts)
-  //   this.trigger(this.posts)
-  // },
-  //
-  // onCreateFail(err) {
-  //   console.error(err)
-  // },
-  //
-  // onLoadCompleted(posts) {
-  //   if(posts instanceof Array) {
-  //     posts = _.indexBy(posts, 'id')
-  //     this.loaded = true
-  //   }
-  //
-  //   _.assign(this.posts, posts)
-  //   this.trigger(this.posts)
-  // },
-  //
-  // onLoadFail(err) {
-  //   console.error(err)
-  // },
-  //
-  // getInitialState() {
-  //   return this.posts
-  // }
-
 })
 
 export default PostStore
