@@ -2,9 +2,12 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: './web/static/js/index.js',
+  entry: {
+    admin: './admin/js',
+    app: './web/static/js'
+  },
   output: {
-    filename: 'app.js',
+    filename: '[name].js',
     path: './priv/static/js'
   },
   resolve: {
