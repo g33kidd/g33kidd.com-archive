@@ -13,4 +13,13 @@
     font-size: 20px;
     width:100%;
   }
+
+  .editor {
+    display: block;
+    border: 0;
+    width: 100%;
+    outline: none;
+    border-bottom: 2px solid #f3f3f3;
+    height: 200px;
+  }
 }

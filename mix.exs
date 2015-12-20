@@ -43,6 +43,8 @@ defmodule Blog.Mixfile do
      {:exgravatar, "~> 2.0.0"},
      {:ja_serializer, "~> 0.6.0"},
      {:earmark, "~> 0.1.19"},
+    #  For now we only want Exsass in development and when you need it
+    #  {:exsass, github: "g33kidd/exsass", only: [:dev]},
      {:html_sanitize_ex, "~> 0.1.0"},
      {:credo, "~> 0.1.9", only: [:dev, :test]}]
   end

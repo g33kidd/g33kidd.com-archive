@@ -13,8 +13,7 @@ const PostEditPage = React.createClass({
     const post = PostStore.getInitialState().posts
     return {
       loading: !PostStore.get(this.props.params.id),
-      posts: post,
-      editor: new SimpleMDE()
+      posts: post
     }
   },
 
@@ -57,7 +56,7 @@ const PostEditPage = React.createClass({
       post: {
         title: this.refs.title.value,
         slug: this.refs.slug.value,
-        body: this.editor.value()
+        body: this.refs.textarea.value
       }
     }
 
@@ -75,17 +74,21 @@ const PostEditPage = React.createClass({
 
     return (
       <div className="post-form">
-        <div>
-          <input type="text" className="input title" value={post.title}
-            ref="title" onChange={this.titleChanged} />
-        </div>
-        <div>
-          <input type="text" className="input slug" ref="slug" value={post.slug} />
-        </div>
-        <div>
-          <textarea value={post.attributes.body} onChange={this.updateBody}></textarea>
-        </div>
-        <button onClick={this.handleUpdatePost} className="update-post">Save</button>
+
+        <input ref="title" type="text" className="input title"
+          value={post.title} onChange={this.titleChanged} />
+
+        <input ref="slug" type="text"
+          className="input slug" value={post.slug} />
+
+        <textarea ref="textarea" defaultValue={post.attributes.body}
+          className="editor"
+          onChange={this.updateBody}>
+        </textarea>
+
+        <button onClick={this.handleUpdatePost}
+          className="update-post">Save</button>
+
       </div>
     )
   }
