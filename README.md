@@ -11,10 +11,9 @@ Just a work-in-progress. Feel free to install it and check it out. See the botto
 #### API/Server
 - Better authentication. Remove Joken and use something like `Guardian`. see http://blog.overstuffedgorilla.com/simple-guardian/
 
-#### Admin/React
-- Modal Component
-- Re-structure the PostStore, AuthStore, and other stores.
-- Markdown Editor for the Posts; with custom addons? Can React easily be extended? Checkout N1 email client and other solutions on how to create a plugin system for react?
+#### Admin
+- Move to Angular2
+- Markdown Editor
 
 ```
 Template1 {name: "header.html", content: "<h1>some_html</h1>", partial: true}
