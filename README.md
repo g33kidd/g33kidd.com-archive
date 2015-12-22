@@ -30,5 +30,5 @@ You might want to install elixir, phoenix, and webpack if you want. You should h
 Just run `npm install && mix deps.get && `
 
 
-## Deploayment
+## Deployment
 Noyhing here yet, but there will be soon.
