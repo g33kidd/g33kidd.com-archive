@@ -4,8 +4,8 @@ defmodule Blog.SiteController do
   plug Blog.Plugs.Analytics
 
   def index(conn, params) do
-    render conn, "index.html",
-      posts: Blog.Post.all
+    template = Blog.Repo.get_by! Blog.Template, name: "index.html"
+    render conn, "index.html", template: template, posts: Blog.Post.all
   end
 
   def display(conn, %{"slug" => slug}), do: show_post(conn, [slug: slug])

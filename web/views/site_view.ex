@@ -1,5 +1,7 @@
 defmodule Blog.SiteView do
   use Blog.Web, :view
 
-  # render string as template
+  def render("index.html", %{template: template}) do
+    EEx.eval_string template.content, []
+  end
 end
