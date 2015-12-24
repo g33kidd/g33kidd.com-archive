@@ -26,8 +26,15 @@ Hopefully get my Elixir implementation of libsass working; then add some fun rea
 ## Getting Started
 You might want to install elixir, phoenix, and webpack if you want. You should have Node and npm installed.
 
-Just run `npm install && mix deps.get && `
+Just run `npm install && mix deps.get && mix deps.compile`
 
+Create a default user `mix run priv/repo/seeds.ex`
+
+Run the server `mix phoenix.server`
+
+You should be able to access the admin interface at `localhost:4000/admin/`
+
+And the main site at `localhost:4000/`
 
 ## Deployment
 Noyhing here yet, but there will be soon.

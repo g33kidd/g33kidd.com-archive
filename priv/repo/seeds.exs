@@ -22,16 +22,12 @@ template = Blog.Template.changeset %Blog.Template{}, %{
 Blog.Repo.insert! template
 
 changeset = Blog.User.changeset %Blog.User{}, %{
-  username: "g33kidd",
+  username: "admin",
   name: "Name",
-  email: "some@email.com",
+  email: "admin@email.com",
   admin: true,
   password: "admin",
-  password_confirmation: "admin",
-  profiles: %{
-    website: "g33kidd.com",
-    twitter: "g33k_kidd"
-  }
+  password_confirmation: "admin"
 }
 
 Blog.Repo.insert! changeset
