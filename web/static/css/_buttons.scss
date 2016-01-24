@@ -1,0 +1,29 @@
+.btn {
+  padding: 15px 20px;
+  color: #FFFFFF;
+  transition: background ease 250ms;
+
+  &.red {
+    background: #D16868;
+    &:hover {
+      background: darken(#D16868, 10%);
+    }
+  }
+
+  &.blue {
+    background: #6888D1;
+    &:hover {
+      background: darken(#6888D1, 10%);
+    }
+  }
+
+  &.sm-rad {
+    border-radius: 4px;
+  }
+
+  // TODO: move this to some helpers file
+  &.upper {
+    text-transform: uppercase;
+  }
+
+}

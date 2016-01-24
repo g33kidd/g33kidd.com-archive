@@ -1,21 +1,15 @@
-// Brunch automatically concatenates all files in your
-// watched paths. Those paths can be configured at
-// config.paths.watched in "brunch-config.js".
-//
-// However, those files will only be executed if
-// explicitly imported. The only exception are files
-// in vendor, which are never wrapped in imports and
-// therefore are always executed.
-
-// Import dependencies
-//
-// If you no longer want to use a dependency, remember
-// to also remove its path from "config.paths.watched".
 import "phoenix_html"
+import $ from 'jquery'
+// import socket from './socket'
 
-// Import local files
-//
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
+$(document).ready(() => {
 
-// import socket from "./socket"
+  // Just a helper to add background images to various divs, rather than
+  // having to set the background-image style attribute.
+  var $databg = $('[data-bg]');
+  $databg.each(function() {
+    let background = $(this).data('bg');
+    $(this).css('background-image', `url(${background})`);
+  });
+
+});

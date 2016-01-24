@@ -1,0 +1,32 @@
+header.header {
+
+  background: #E5E5E5;
+  padding: 5px 0;
+  height: 70px;
+
+  .logo {
+    height: 60px;
+    margin: 0px 5px;
+    border-radius: 100%;
+  }
+
+  nav.main-nav {
+    padding: 10px 0;
+    float: right;
+
+    .nav-item {
+      display: inline-block;
+      margin: 10px 5px;
+      font-weight: 700;
+      a.item {
+        padding: 15px 10px;
+        color: #727272;
+        transition: color ease 150ms;
+
+        &:hover {
+          color: lighten(#727272, 20%);
+        }
+      }
+    }
+  }
+}
