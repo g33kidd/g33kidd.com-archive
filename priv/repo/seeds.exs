@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+Blog.Repo.insert!(%Blog.Post{
+  title: "Creating a Storage Module for OAuth2Ex",
+  content: "",
+  slug: ""
+})

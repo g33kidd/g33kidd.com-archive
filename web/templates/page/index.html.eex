@@ -1,9 +1,11 @@
-<div class="container">
-  
-  <div class="hero">
-  </div>
+<!-- <div class="container"> -->
 
+<div class="hero">
+  <div class="container">
+  </div>
 </div>
+
+<!-- </div> -->
 
 <!-- <div class="post">
   <div class="container full bg" data-bg="https://images.unsplash.com/photo-1442589031151-61d5645469d7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=86aed4d82f9ab1324e46ae97b4cd98e1">
