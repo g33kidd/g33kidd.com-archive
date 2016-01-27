@@ -8,33 +8,36 @@
     <meta name="author" content="">
 
     <title>G33KIDD</title>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,400,700,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <header class="header">
-      <div class="container">
+      <div class="sitename">
         <a href="/">
-          <img src="https://www.fillmurray.com/300/300" alt="Logo" class="logo" />
+          <span class="num">G33KIDD</span>
+          <span class="let">GEEKIDD</span>
         </a>
-        <nav class="main-nav" role="navigation">
-          <div class="nav-item"><a class="item" href="/blog">Blog</a></div>
-          <div class="nav-item"><a class="item" href="/portfolio">Portfolio</a></div>
-          <div class="nav-item"><a class="item" href="/services">Services</a></div>
-          <div class="nav-item"><a class="item" href="/about">About Me</a></div>
-          <div class="nav-item">
-            <a href="/contact" class="btn blue sm-rad upper">Get in Touch</a>
-          </div>
-        </nav>
+      </div>
+
+      <nav class="main-nav">
+        <div><a href="/">Home</a></div>
+        <div><a href="/blog">Writing</a></div>
+        <div><a href="/code">Code</a></div>
+        <div><a href="/projects">Projects</a></div>
+      </nav>
+
+      <div class="contact">
+        <a href="#" id="contactButton">Contact Me</a>
       </div>
     </header>
 
     <main role="main">
       <%= render @view_module, @view_template, assigns %>
     </main>
-    <footer class="footer"></footer>
 
+    <footer class="footer"></footer>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

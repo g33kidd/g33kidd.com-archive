@@ -1,17 +1,80 @@
-@import "settings";
 @import "reset";
-@import "grid";
-@import "header";
-@import "forms";
-@import "buttons";
 
 body {
   font-family: "Lato", sans-serif;
-  background: #F9F9F9;
 }
 
-.hero {
-  width: 100%;
-  background: #FFF;
-  padding: 15px 20px;
+.header {
+  background: #3F89B2;
+  height: 70px;
+  padding: 0px 20px;
+  text-align: center;
+
+  .sitename {
+    float: left;
+    font-weight: 100;
+    font-size: 35px;
+    padding: 14px 0;
+    // line-height: 1;
+
+    span { color: #FFF; }
+
+    .let { display: none; }
+    .num { display: block; }
+
+    // could be a better way to transition between...
+    // &:hover {
+    //   .num { display: none; }
+    //   .let { display: block; }
+    // }
+  }
+
+  .main-nav {
+    // padding: 10px 0;
+    display: inline-block;
+    max-width: 500px;
+
+    div {
+      display: inline-block;
+      padding: 23px 0;
+      margin: 0;
+
+      a {
+        color: #FFFFFF;
+        padding: 10px 15px;
+        font-size: 20px;
+        font-weight: 300;
+        transition: color 150ms ease;
+        &:hover {
+          color: darken(#FFF, 10%);
+        }
+      }
+    }
+  }
+
+  .contact {
+    float: right;
+    padding: 12px 0;
+    a {
+      display: block;
+      background: #60CABC;
+      box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.50);
+      border-radius: 3px;
+      color: #FFFFFF;
+      font-size: 20px;
+      font-weight: 300;
+      padding: 10px 20px;
+      transition: background 100ms ease;
+
+      &:hover {
+        background: darken(#60CABC, 5%);
+      }
+    }
+  }
+
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
 }

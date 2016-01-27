@@ -1,7 +1,11 @@
 <div class="container">
 
   <div class="post-listing">
-    <!-- List some posts... -->
+    <%= for post <- @posts do %>
+      <div class="post">
+        <%= post.title %>
+      </div>
+    <% end %>
   </div>
 
 </div>
